@@ -1,0 +1,41 @@
+// Place all the styles related to the Dublin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+	background-color: black;
+
+	.content {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		margin: 10px 15% 10px 15%;
+
+		@keyframes play-button-animation {
+			from {
+				background-color: #1db1b1;
+		    	border-color: #0b5454;
+		    	color: white;
+			}
+
+			to {
+				background-color: #0b5454;
+		    	border-color: #1db1b1;
+		    	color: black;
+			}
+		}
+
+		#play_button {
+			animation-name: play-button-animation;
+			animation-direction: alternate-reverse;
+			animation-duration: 4s;
+			animation-iteration-count: infinite;
+
+		    background-color: #1db1b1;
+		    border-color: #0b5454;
+		    border-radius: 10px;
+		    font-size: 50px;
+		    margin: 16px 0;
+		    width: 250px;
+		}
+	}
+}
