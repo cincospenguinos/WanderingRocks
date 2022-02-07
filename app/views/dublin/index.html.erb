@@ -1,4 +1,24 @@
+<div id="sound-effects-data" style="display: none;" data-allopts="<%= @all_opts.to_json %>"></div>
 <div class="content">
 	<button id="play_button">Play</button>
+	<div class="sound-effects-board">
+		<% @all_opts.each_pair do |effect, options_in_effect| %>
+			<% options_in_effect.each_pair do |option_key, option_info| %>
+				<% effect_id = "#{effect}-#{option_key}"%>
+				<div class="sound-effect">
+					<label for="<%= effect_id %>"><%= "#{effect} #{option_key}" %></label>
+					<input
+						id="<%= effect_id %>"
+						type="range"
+						min="<%= option_info[:min] %>"
+						max="<%= option_info[:max] %>"
+						step="<%= option_info[:step] %>"
+						value="<%= option_info[:value] %>"
+					/>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
 </div>
+
 <%= javascript_pack_tag 'WanderingRocks/index' %>

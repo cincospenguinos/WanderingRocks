@@ -5,15 +5,34 @@ export default class SoundControl {
 		this._sound = new Pizzicato.Sound(SoundControl.SOUND_FILE_CONFIG);
 		this._effects = {};
 
-		Object.keys(SoundControl.ALL_OPTS).forEach((soundEffectKey) => {
-			const sound = this._instantiatePizzicatoEffectFor(soundEffectKey, SoundControl.ALL_OPTS[soundEffectKey]);
-			this._sound.addEffect(sound);
-			this._effects[soundEffectKey] = sound;
+		const backendData = JSON.parse(document.getElementById('sound-effects-data').dataset['allopts']);
+		Object.keys(backendData).forEach((soundEffectKey) => {
+			const soundEffectValues = {};
+			Object.keys(backendData[soundEffectKey]).forEach(k => soundEffectValues[k] = backendData[soundEffectKey][k].value);
+			const effect = this._instantiatePizzicatoEffectFor(soundEffectKey, soundEffectValues);
+			this._sound.addEffect(effect);
+			this._effects[soundEffectKey] = effect;
 		});
 	}
 
 	play() {
 		this._sound.play();
+	}
+
+	setEffectValue(effectName, effectValue, value) {
+		const effect = this._effects[effectName];
+
+		if (!effect) {
+			throw `No effect named '${effectName}'`;
+		}
+
+		if (effect[effectValue] !== undefined && effect[effectValue] !== null) {
+			effect[effectValue] = value;
+		} else if (Object.keys(effect.options).includes(effectValue)){
+			effect.options[effectValue] = value;
+		} else {
+			throw `No value '${effectValue}' found for ${effectName}`
+		}
 	}
 
 	_instantiatePizzicatoEffectFor(key, currentValues) {
@@ -52,69 +71,5 @@ SoundControl.SOUND_FILE_CONFIG = {
 	source: 'file',
 	options: {
 		path: 'june16th.mp3',
-	},
-};
-
-SoundControl.ALL_OPTS = {
-	delay: {
-		feedback: 0.0,
-		time: 0.0,
-		mix: 0.0,
-	},
-	compressor: {
-		threshold: 0,
-    ratio: 0,
-	},
-	distortion: {
-		gain: 0.0,
-	},
-	dubDelay: {
-		feedback: 0.0,
-		time: 0.0,
-		mix: 0.0,
-		cutoff: 0,
-	},
-	flanger: {
-		time: 0.0,
-    speed: 0.0,
-    depth: 0.0,
-    feedback: 0.0,
-    mix: 0.0,
-	},
-	highPassFilter: {
-		frequency: 0,
-    peak: 0,
-	},
-	pingPong: {
-		feedback: 0.0,
-		time: 0.0,
-		mix: 0.0,
-	},
-	lowPassFilter: {
-		frequency: 0,
-    peak: 0,
-	},
-	quadrafuzz: {
-		lowGain: 0.0,
-    midLowGain: 0.0,
-    midHighGain: 0.0,
-    highGain: 0.0,
-    mix: 0.0,
-	},
-	reverb: {
-		time: 1.0,
-    decay: 0.8,
-    reverse: false,
-    mix: 1.0
-	},
-	ringModulator: {
-		speed: 0,
-    distortion: 0,
-    mix: 0.0,
-	},
-	tremolo: {
-		speed: 0,
-    depth: 0.0,
-    mix: 0.0,
 	},
 };
