@@ -52,11 +52,11 @@ class DublinController < ApplicationController
       decay: { min: 0.0001, max: 10, step: 0.01, value: 1 },
       mix: { min: 0, max: 1, step: 0.01, value: 0.0 },
     },
-    # ringModulator: {
-    #   speed: { min: 0, max: 2000, step: 1, value: 4 },
-    #   distortion: { min: 0.2, max: 50, step: 0.1, value: 0.2 },
-    #   mix: { min: 0, max: 1, step: 0.01, value: 0.0 },
-    # },
+    ringModulator: {
+      speed: { min: 0, max: 2000, step: 1, value: 4 },
+      distortion: { min: 0.2, max: 50, step: 0.1, value: 0.2 },
+      mix: { min: 0, max: 0.5, step: 0.01, value: 0.0 },
+    },
     tremolo: {
       speed: { min: 0, max: 20, step: 0.1, value: 20 },
       depth: { min: 0, max: 1, step: 0.01, value: 0.5 },

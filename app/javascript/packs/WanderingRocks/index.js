@@ -6,6 +6,7 @@ const soundControl = new SoundControl();
 const soundView = new SoundView(soundControl);
 
 playButton.onclick = function() {
+	document.getElementById('sound-effects-board').style.display = 'block';
 	playButton.remove();
 	soundControl.play();
 }

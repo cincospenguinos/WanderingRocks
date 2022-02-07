@@ -18,6 +18,10 @@ export default class SoundControl {
 		this._sound.play();
 	}
 
+	setVolume(value) {
+		this._sound.volume = value;
+	}
+
 	setEffectValue(effectName, effectValue, value) {
 		const effect = this._sound.effects.find(e => e._soundEffectKey === effectName);
 

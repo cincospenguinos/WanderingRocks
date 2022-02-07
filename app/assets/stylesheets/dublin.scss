@@ -37,12 +37,25 @@ body {
 		    margin: 16px 0;
 		    width: 250px;
 		}
+	}
 
-		.sound-effect {
-			color: white;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
+	.sound-effects-board {
+		width: 100%;
+	}
+}
+
+.sound-bar {
+	align-items: center;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	label {
+		font-size: 40px;
+	}
+
+	input {
+		width: 100%;
 	}
 }

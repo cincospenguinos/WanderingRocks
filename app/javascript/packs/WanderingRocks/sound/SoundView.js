@@ -5,6 +5,11 @@ export default class SoundView {
 			.forEach((element) => element.addEventListener('input', (_) => {
 				this.effectSliderHasChanged(element);
 			}));
+
+		document.querySelector('input#main-volume')
+			.addEventListener('input', (evt) => {
+				this._soundController.setVolume(Number(evt.target.value));
+			});
 	}
 
 	effectSliderHasChanged(element) {
