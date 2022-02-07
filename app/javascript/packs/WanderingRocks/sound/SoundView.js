@@ -2,7 +2,9 @@ export default class SoundView {
 	constructor(soundController) {
 		this._soundController = soundController;
 		document.querySelectorAll(SoundView.ALL_OPTIONS_SELECTOR)
-			.forEach((element) => element.oninput = () => this.effectSliderHasChanged(element));
+			.forEach((element) => element.addEventListener('input', (_) => {
+				this.effectSliderHasChanged(element);
+			}));
 	}
 
 	effectSliderHasChanged(element) {

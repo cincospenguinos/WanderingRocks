@@ -3,15 +3,14 @@ import Pizzicato from 'pizzicato';
 export default class SoundControl {
 	constructor() {
 		this._sound = new Pizzicato.Sound(SoundControl.SOUND_FILE_CONFIG);
-		this._effects = {};
 
 		const backendData = JSON.parse(document.getElementById('sound-effects-data').dataset['allopts']);
 		Object.keys(backendData).forEach((soundEffectKey) => {
 			const soundEffectValues = {};
 			Object.keys(backendData[soundEffectKey]).forEach(k => soundEffectValues[k] = backendData[soundEffectKey][k].value);
 			const effect = this._instantiatePizzicatoEffectFor(soundEffectKey, soundEffectValues);
+			effect._soundEffectKey = soundEffectKey
 			this._sound.addEffect(effect);
-			this._effects[soundEffectKey] = effect;
 		});
 	}
 
@@ -20,18 +19,16 @@ export default class SoundControl {
 	}
 
 	setEffectValue(effectName, effectValue, value) {
-		const effect = this._effects[effectName];
+		const effect = this._sound.effects.find(e => e._soundEffectKey === effectName);
 
 		if (!effect) {
 			throw `No effect named '${effectName}'`;
 		}
 
 		if (effect[effectValue] !== undefined && effect[effectValue] !== null) {
-			effect[effectValue] = value;
+			effect[effectValue] = Number(value);
 		} else if (Object.keys(effect.options).includes(effectValue)){
-			effect.options[effectValue] = value;
-		} else {
-			throw `No value '${effectValue}' found for ${effectName}`
+			effect.options[effectValue] = Number(value);
 		}
 	}
 

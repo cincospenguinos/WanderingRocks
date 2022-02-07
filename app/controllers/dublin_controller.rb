@@ -13,7 +13,7 @@ class DublinController < ApplicationController
       threshold: { min: -100, max: 0, step: 1, value: 0 },
     },
     distortion: {
-      gain: { min: 0, max: 1, step: 0.01, value: 0.5 },
+      gain: { min: 0, max: 1, step: 0.01, value: 0.0 },
     },
     dubDelay: {
       feedback: { min: 0, max: 1, step: 0.01, value: 0.5 },
@@ -28,19 +28,19 @@ class DublinController < ApplicationController
       feedback: { min: 0, max: 1, step: 0.01, value: 0.5 },
       mix: { min: 0, max: 1, step: 0.01, value: 0.0 },
     },
-    highPassFilter: {
-      frequency: { min: 10, max: 22050, step: 10, value: 10 },
-      peak: { min: 0.0001, max: 1000, step: 0.01, value: 1 },
-    },
+    # highPassFilter: {
+    #   frequency: { min: 10, max: 22050, step: 10, value: 10 },
+    #   peak: { min: 0.0001, max: 1000, step: 0.01, value: 1 },
+    # },
     pingPong: {
       feedback: { min: 0, max: 1, step: 0.01, value: 0.5 },
       time: { min: 0, max: 1, step: 0.01, value: 0.5 },
       mix: { min: 0, max: 1, step: 0.01, value: 0.0 },
     },
-    lowPassFilter: {
-      frequency: { min: 10, max: 22050, step: 10, value: 10 },
-      peak: { min: 0.0001, max: 1000, step: 0.01, value: 2 },
-    },
+    # lowPassFilter: {
+    #   frequency: { min: 10, max: 22050, step: 10, value: 10 },
+    #   peak: { min: 0.0001, max: 1000, step: 0.01, value: 2 },
+    # },
     quadrafuzz: {
       lowGain: { min: 0, max: 1, step: 0.01, value: 0.5 },
       midLowGain: { min: 0, max: 1, step: 0.01, value: 0.5 },
@@ -52,11 +52,11 @@ class DublinController < ApplicationController
       decay: { min: 0.0001, max: 10, step: 0.01, value: 1 },
       mix: { min: 0, max: 1, step: 0.01, value: 0.0 },
     },
-    ringModulator: {
-      speed: { min: 0, max: 2000, step: 1, value: 4 },
-      distortion: { min: 0.2, max: 50, step: 0.1, value: 0.2 },
-      mix: { min: 0, max: 1, step: 0.01, value: 0.0 },
-    },
+    # ringModulator: {
+    #   speed: { min: 0, max: 2000, step: 1, value: 4 },
+    #   distortion: { min: 0.2, max: 50, step: 0.1, value: 0.2 },
+    #   mix: { min: 0, max: 1, step: 0.01, value: 0.0 },
+    # },
     tremolo: {
       speed: { min: 0, max: 20, step: 0.1, value: 20 },
       depth: { min: 0, max: 1, step: 0.01, value: 0.5 },

@@ -1,6 +1,10 @@
 <div id="sound-effects-data" style="display: none;" data-allopts="<%= @all_opts.to_json %>"></div>
 <div class="content">
 	<button id="play_button">Play</button>
+	<div class="volume-slider">
+		<label for="main-volume">Volume</label>
+		<input id="main-volume" type="range" min="0" max="1" step="0.01" value="1.0" />
+	</div>
 	<div class="sound-effects-board">
 		<% @all_opts.each_pair do |effect, options_in_effect| %>
 			<% options_in_effect.each_pair do |option_key, option_info| %>
