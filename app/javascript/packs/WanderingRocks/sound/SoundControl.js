@@ -14,15 +14,23 @@ export default class SoundControl {
 		});
 	}
 
-	play() {
-		this._sound.play();
+	play(secondsDuration) {
+		this._sound.play(0, secondsDuration);
+	}
+
+	playing() {
+		return this._sound.playing;
+	}
+
+	addListener(listener) {
+		this._listener = listener;
 	}
 
 	setVolume(value) {
 		this._sound.volume = value;
 	}
 
-	setEffectValue(effectName, effectValue, value) {
+	setEffectValue(effectName, effectValue, value, submit = true) {
 		const effect = this._sound.effects.find(e => e._soundEffectKey === effectName);
 
 		if (!effect) {
@@ -33,6 +41,10 @@ export default class SoundControl {
 			effect[effectValue] = Number(value);
 		} else if (Object.keys(effect.options).includes(effectValue)){
 			effect.options[effectValue] = Number(value);
+		}
+
+		if (this._listener && submit) {
+			this._listener({ effectName, effectValue, value });
 		}
 	}
 

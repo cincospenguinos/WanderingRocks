@@ -12,6 +12,14 @@ export default class SoundView {
 			});
 	}
 
+	show(whichEffects) {
+		document.getElementById('sound-effects-board').style.display = 'block';
+
+		whichEffects.forEach((effectKey) => {
+			document.getElementById(`${effectKey}-container`).style.display = '';
+		});
+	}
+
 	effectSliderHasChanged(element) {
 		const split = element.id.split('-');
 		const effectName = split[0];
