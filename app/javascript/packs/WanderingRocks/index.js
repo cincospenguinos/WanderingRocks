@@ -1,3 +1,6 @@
+import Phaser from 'phaser';
+import ImagesScene from './images/ImagesScene.js';
+
 import SoundControl from './sound/SoundControl.js';
 import SoundView from './sound/SoundView.js';
 import DublinerChannel from '../../channels/dubliner_channel.js';
@@ -7,6 +10,20 @@ const soundControl = new SoundControl();
 const soundView = new SoundView(soundControl);
 
 const dublinerChannel = new DublinerChannel();
+
+const streetsOfDublin = new Phaser.Game({
+	parent: 'images-scene-container',
+	type: Phaser.WEBGL,
+	width: 1000,
+	height: 600,
+	pixelArt: false,
+	physics: {},
+	scale: {
+		mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+	},
+	scene: ImagesScene,
+});
 
 playButton.onclick = function() {
 	playButton.remove();
