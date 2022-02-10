@@ -1,7 +1,7 @@
 ---
 name: Tunnel
 type: fragment
-uniform.alpha: { "type": "1f", "value": 1.0 }
+uniform.alpha: { "type": "1f", "value": 0.00001 }
 uniform.origin: { "type": "1f", "value": 2.0 }
 uniform.iChannel0: { "type": "sampler2D", "value": null, "textureData": { "repeat": true } }
 ---
@@ -18,7 +18,7 @@ uniform float origin;
 varying vec2 fragCoord;
 
 #define S 0.79577471545 // Precalculated 2.5 / PI
-#define E 0.0001
+#define E 0.0002
 
 void main(void) {
     vec2 p = (origin * fragCoord.xy / resolution.xy - 1.0) * vec2(resolution.x / resolution.y, 1.0);

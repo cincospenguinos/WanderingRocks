@@ -11,25 +11,26 @@ const soundView = new SoundView(soundControl);
 
 const dublinerChannel = new DublinerChannel();
 
-const streetsOfDublin = new Phaser.Game({
-	parent: 'images-scene-container',
-	type: Phaser.WEBGL,
-	width: 1000,
-	height: 600,
-	pixelArt: false,
-	physics: {},
-	scale: {
-		mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-	},
-	scene: ImagesScene,
-});
-
 playButton.onclick = function() {
 	playButton.remove();
 
+	const streetsOfDublin = new Phaser.Game({
+		parent: 'images-scene-container',
+		type: Phaser.WEBGL,
+		width: 1000,
+		height: 600,
+		pixelArt: false,
+		physics: {},
+		scale: {
+			mode: Phaser.Scale.FIT,
+	    autoCenter: Phaser.Scale.CENTER_BOTH,
+		},
+		scene: ImagesScene,
+	});
+
 	soundControl.addListener((modifiedInfo) => {
 		dublinerChannel.submit('effect_modified', modifiedInfo);
+		streetsOfDublin.scene.scenes[0].events.emit('effect_modified');
 	});
 
 	dublinerChannel.addListener((data) => {
@@ -37,6 +38,7 @@ playButton.onclick = function() {
 			soundControl.play(Number(data.seconds));
 			soundView.show(data.effects);
 		} else {
+			streetsOfDublin.scene.scenes[0].events.emit('effect_modified');
 			soundControl.setEffectValue(data.effectName, data.effectValue, Number(data.value), false);
 		}
 	});
