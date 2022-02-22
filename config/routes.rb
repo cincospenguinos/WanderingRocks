@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root 'dublin#index'
+  get '/dublin' => 'dublin#index'
+  root 'find_game#index'
 end
