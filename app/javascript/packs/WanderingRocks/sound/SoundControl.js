@@ -83,6 +83,6 @@ export default class SoundControl {
 SoundControl.SOUND_FILE_CONFIG = {
 	source: 'file',
 	options: {
-		path: 'june16th.mp3',
+		path: '/wanderingRocks/june16th.mp3',
 	},
 };

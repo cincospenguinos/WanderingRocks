@@ -1,11 +1,11 @@
 import Phaser from 'phaser';
 
 const DUBLIN_IMAGES = [
-	{ key: 'iveagh_gardens', location: '/iveagh_gardens.jpg' },
-	{ key: 'joyceshouse', location: '/joyceshouse.jpg' },
-	{ key: 'obrien_institute', location: '/obrien_institute.jpg' },
-	{ key: 'phoenix_monument', location: '/phoenix_monument.jpg' },
-	{ key: 'presbytery', location: '/presbytery.png' },
+	{ key: 'iveagh_gardens', location: '/wanderingRocks/iveagh_gardens.jpg' },
+	{ key: 'joyceshouse', location: '/wanderingRocks/joyceshouse.jpg' },
+	{ key: 'obrien_institute', location: '/wanderingRocks/obrien_institute.jpg' },
+	{ key: 'phoenix_monument', location: '/wanderingRocks/phoenix_monument.jpg' },
+	{ key: 'presbytery', location: '/wanderingRocks/presbytery.png' },
 ];
 
 export default class ImagesScene extends Phaser.Scene {
@@ -14,7 +14,7 @@ export default class ImagesScene extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.glsl('shaders', 'shaders.glsl.js');
+		this.load.glsl('shaders', '/wanderingRocks/shaders.glsl.js');
 		DUBLIN_IMAGES.forEach(i => this.load.image(i.key, i.location));
 	}
 
@@ -44,7 +44,6 @@ export default class ImagesScene extends Phaser.Scene {
 		this.tunnelShader.setInteractive();
 
 		this.events.on('effect_modified', () => {
-			console.log('YOOOOO');
 			const img = DUBLIN_IMAGES[Math.floor(Math.random() * DUBLIN_IMAGES.length)];
 			this.tunnelShader.setChannel0(img.key);
 		});
