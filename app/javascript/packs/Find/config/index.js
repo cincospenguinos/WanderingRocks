@@ -6,6 +6,9 @@ const CONFIG = {
 			width: 600,
 			height: 400,
 		},
+		grid: {
+			size: 26,
+		}
 	},
 	sprites: {...SPRITES},
 };
