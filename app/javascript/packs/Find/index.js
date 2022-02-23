@@ -8,7 +8,13 @@ new Phaser.Game({
 	width: CONFIG.dimensions.screen.width,
 	height: CONFIG.dimensions.screen.height,
 	pixelArt: true,
-	physics: {},
+	physics: {
+		default: 'arcade',
+		arcade: {
+			debug: true,
+			gravity: 0,
+		},
+	},
 	scale: {
 		mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
