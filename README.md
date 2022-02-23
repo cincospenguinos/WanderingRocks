@@ -25,3 +25,4 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 - [ ] Create a waiting room that shows a randomly generated person who _does not exist in the city block_
 - [ ] Once the waiting room's timer hits zero, everybody in the waiting room appears on the map in random places
 - [ ] Meandering around works as intended
+- [ ] Players are randomly assigned a sprite
