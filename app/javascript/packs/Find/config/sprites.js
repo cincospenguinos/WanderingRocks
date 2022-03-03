@@ -1,6 +1,10 @@
 const spriteDirLoc = '/find/sprites';
 
 const SPRITES = {
+	andre: {
+		key: 'andre',
+		location: `${spriteDirLoc}/andre.png`,
+	},
 	tilesheet: {
 		key: 'tilesheet',
 		location: `${spriteDirLoc}/tilesheet.png`,
