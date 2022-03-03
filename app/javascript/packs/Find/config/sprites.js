@@ -1,6 +1,12 @@
 const spriteDirLoc = '/find/sprites';
 
-const SPRITES = {};
+const SPRITES = {
+	tilesheet: {
+		key: 'tilesheet',
+		location: `${spriteDirLoc}/tilesheet.png`,
+		json: `/find/json/salt_lake_city.json`,
+	},
+};
 
 // TODO: Add more sprites and update the ones here!
 const TOTAL_PLAYER_SPRITES = 1;

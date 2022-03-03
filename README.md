@@ -11,8 +11,8 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 
 ## TODO
 
-- [ ] Get a simple sprite to move on an empty screen
-- [ ] Movement is "cell-like," like in Pokemon
+- [x] Get a simple sprite to move on an empty screen
+- [x] Movement is "cell-like," like in Pokemon
 - [ ] Create a map of Salt Lake City
 - [ ] Get the sprite to move in Salt Lake City
 - [ ] Create a little dialogue system
@@ -22,6 +22,7 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 	- [ ] A man fresh out of prison asking for money
 	- [ ] A car hits a pedestrian or cyclist
 	- [ ] A conversation in French about the limitations of computing
+	- [ ] There is a dog that will follow you once you interact with it
 - [ ] Create a waiting room that shows a randomly generated person who _does not exist in the city block_
 - [ ] Once the waiting room's timer hits zero, everybody in the waiting room appears on the map in random places
 - [ ] Meandering around works as intended
