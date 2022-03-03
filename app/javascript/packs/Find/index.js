@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { CONFIG } from './config/index.js';
-import GameScene from './scenes/GameScene.js';
+import GameScene from './scenes/game/GameScene.js';
+import DialogueScene from './scenes/dialogue/DialogueScene.js';
 
 new Phaser.Game({
 	parent: 'game-container',
@@ -19,5 +20,5 @@ new Phaser.Game({
 		mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
 	},
-	scene: [GameScene],
+	scene: [GameScene, DialogueScene],
 });

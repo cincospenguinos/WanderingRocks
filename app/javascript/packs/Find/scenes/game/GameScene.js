@@ -1,8 +1,21 @@
 import Phaser from 'phaser';
-import { CONFIG } from '../config/index.js';
+import { CONFIG } from '../../config/index.js';
 import PlayerInput from './PlayerInput.js';
 import PlayerSprite from './PlayerSprite.js';
 import Map from './Map.js';
+
+class DialogueSprite extends Phaser.Physics.Arcade.Sprite {
+	constructor(scene, info) {
+		super(scene, info.x, info.y, info.key);
+		scene.add.existing(this);
+		scene.physics.add.existing(this);
+		this.setScale(0.5);
+	}
+
+	applyDialogueOption(other) {
+
+	}
+}
 
 export default class GameScene extends Phaser.Scene {
 	constructor() {
@@ -25,19 +38,35 @@ export default class GameScene extends Phaser.Scene {
 	}
 
 	create() {
+		this.scene.launch('DialogueScene');
+
 		this.cameras.main.zoom = CONFIG.constants.zoomAmount;
 		this._map = new Map(this);
 
-		const andre = this.add.sprite(120, 120, CONFIG.sprites.andre.key);
-		andre.setScale(0.5);
+		this._dialogueSprites = [new DialogueSprite(this, {
+			key: CONFIG.sprites.andre.key,
+			x: 120,
+			y: 120,
+		})];
 
-		this.player = new PlayerSprite(this, { x: 36, y: 6 });
+		this.player = new PlayerSprite(this, { x: 6, y: 6 });
 		this.cameras.main.startFollow(this.player);
 		this._playerInput = new PlayerInput(this);
-
 	}
 
 	update() {
+		this._handleInput();
+		const overlapping = this._dialogueSprites
+			.map((dialogueSprite) => Phaser.Geom.Intersects.RectangleToRectangle(this.player.body, dialogueSprite.body) ? dialogueSprite : undefined)
+			.filter(d => d)
+		;
+
+		if (overlapping.length) {
+			this.events.emit('dialogue_show', overlapping[0]);
+		}
+	}
+
+	_handleInput() {
 		const currentDirections = this._playerInput.changeInDirections;
 
 		if (!this.player.isMoving && currentDirections.isChanging) {

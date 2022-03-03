@@ -1,10 +1,12 @@
 import Phaser from 'phaser';
-import { CONFIG } from '../config/index.js';
+import { CONFIG } from '../../config/index.js';
 
-export default class PlayerSprite extends Phaser.GameObjects.Sprite {
+export default class PlayerSprite extends Phaser.Physics.Arcade.Sprite {
 	constructor(scene, info) {
 		super(scene, info.x, info.y, 'player');
 		scene.add.existing(this);
+		scene.physics.add.existing(this);
+		this.setCollideWorldBounds(true);
 		this.setScale(0.5);
 		scene.anims.createFromAseprite('player');
 	}
