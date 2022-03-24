@@ -49,7 +49,7 @@ export default class GameScene extends Phaser.Scene {
 			y: 120,
 		})];
 
-		this.player = new PlayerSprite(this, { x: 6, y: 6 });
+		this.player = new PlayerSprite(this, { x: 4, y: 4 });
 		this.cameras.main.startFollow(this.player);
 		this._playerInput = new PlayerInput(this);
 	}

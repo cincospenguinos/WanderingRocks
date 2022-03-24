@@ -1,4 +1,5 @@
 const spriteDirLoc = '/find/sprites';
+const jsonDirLoc = '/find/json';
 
 const SPRITES = {
 	andre: {
@@ -19,7 +20,7 @@ for (let i = 1; i <= TOTAL_PLAYER_SPRITES; i++) {
 
 	SPRITES[key] = {
 		location: `${spriteDirLoc}/character${i}.png`,
-		json: `${spriteDirLoc}/character${i}.json`,
+		json: `${jsonDirLoc}/character${i}.json`,
 	};
 }
 

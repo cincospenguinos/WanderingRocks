@@ -9,8 +9,8 @@ export default class Map {
 	}
 
 	canMoveTo(pos) {
-		return this._layers['walls'].getTileAtWorldXY(pos.x, pos.y) === null;
+		return this._layers['Wall'].getTileAtWorldXY(pos.x, pos.y) === null;
 	}
 }
 
-Map.LAYERS = ['ground', 'walls', 'decoration', 'foreground'];
+Map.LAYERS = ['Ground', 'Wall'];

@@ -8,7 +8,7 @@ const CONFIG = {
 		map: {
 			key: 'map',
 			json: '/find/json/salt_lake_city.json',
-			tilesheetKey: 'tilesheet',
+			tilesheetKey: 'tilemap',
 		}
 	},
 	dimensions: {
@@ -17,7 +17,7 @@ const CONFIG = {
 			height: 400,
 		},
 		grid: {
-			size: 12,
+			size: 16,
 		}
 	},
 	sprites: {...SPRITES},
