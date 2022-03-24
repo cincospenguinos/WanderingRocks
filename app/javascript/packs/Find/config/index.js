@@ -1,4 +1,5 @@
 import { SPRITES } from './sprites.js';
+import { DIALOGUE } from './dialogue.js';
 
 const CONFIG = {
 	constants: {
@@ -9,7 +10,8 @@ const CONFIG = {
 			key: 'map',
 			json: '/find/json/salt_lake_city.json',
 			tilesheetKey: 'tilemap',
-		}
+		},
+		dialogue: { ...DIALOGUE },
 	},
 	dimensions: {
 		screen: {

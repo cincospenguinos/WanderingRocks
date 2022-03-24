@@ -11,6 +11,14 @@ const SPRITES = {
 		location: `${spriteDirLoc}/tilesheet.png`,
 		json: `/find/json/salt_lake_city.json`,
 	},
+	dialogueTileset: {
+		key: 'dialogueTileset',
+		location: `${spriteDirLoc}/dialogue_tileset.png`,
+		config: {
+			frameWidth: 16,
+			frameHeight: 16,
+		},
+	},
 };
 
 // TODO: Add more sprites and update the ones here!

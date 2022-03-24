@@ -9,11 +9,13 @@ class DialogueSprite extends Phaser.Physics.Arcade.Sprite {
 		super(scene, info.x, info.y, info.key);
 		scene.add.existing(this);
 		scene.physics.add.existing(this);
-		this.setScale(0.5);
-	}
 
-	applyDialogueOption(other) {
+		if (!info.name || !info.dialogueText) {
+			throw 'No information for dialogue sprite! Requires `name` and `dialogueText`';
+		}
 
+		this.name = info.name;
+		this.dialogueText = info.dialogueText;
 	}
 }
 
@@ -45,8 +47,10 @@ export default class GameScene extends Phaser.Scene {
 
 		this._dialogueSprites = [new DialogueSprite(this, {
 			key: CONFIG.sprites.andre.key,
-			x: 120,
-			y: 120,
+			x: 80,
+			y: 80,
+			name: 'Andre',
+			dialogueText: CONFIG.data.dialogue.andre,
 		})];
 
 		this.player = new PlayerSprite(this, { x: 4, y: 4 });
@@ -63,6 +67,8 @@ export default class GameScene extends Phaser.Scene {
 
 		if (overlapping.length) {
 			this.events.emit('dialogue_show', overlapping[0]);
+		} else {
+			this.events.emit('dialogue_hide');
 		}
 	}
 
