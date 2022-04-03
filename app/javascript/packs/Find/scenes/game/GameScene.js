@@ -32,6 +32,7 @@ export default class GameScene extends Phaser.Scene {
 
 	create() {
 		this.scene.launch('DialogueScene');
+		this.anims.createFromAseprite('player');
 
 		this.cameras.main.zoom = CONFIG.constants.zoomAmount;
 		this._map = new Map(this);
@@ -64,15 +65,23 @@ export default class GameScene extends Phaser.Scene {
 	}
 
 	_handleInput() {
+		if (this.player.isMoving) {
+			return;
+		}
+
 		const currentDirections = this._playerInput.changeInDirections;
 
-		if (!this.player.isMoving && currentDirections.isChanging) {
+		if (currentDirections.isChanging) {
 			const gridSize = CONFIG.dimensions.grid.size;
 			const nextPos = { x: this.player.x + currentDirections.x, y: this.player.y + currentDirections.y };
 
 			if (this._map.canMoveTo(nextPos)) {
 				this.player.moveTo(nextPos);
+				this.player.anims.play(currentDirections.animName);
+				this.player.flipX = currentDirections.flip;
 			}
+		} else {
+			this.player.setFrame(0);
 		}
 	}
 }

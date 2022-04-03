@@ -14,6 +14,13 @@ export default class PlayerInput {
 			.forEach((k) => {
 				const directionEntry = PlayerInput.DIRECTION_MOVEMENT_MAP[k];
 				directionChange[directionEntry.direction] += directionEntry.amount;
+				directionChange.animName = k;
+				directionChange.flip = false;
+
+				if (directionChange.animName === 'left') {
+					directionChange.animName = 'right';
+					directionChange.flip = true;
+				}
 			});
 
 		const isChanging = directionChange.x !== 0 || directionChange.y !== 0;
