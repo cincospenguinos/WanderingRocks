@@ -1,5 +1,6 @@
 import { SPRITES } from './sprites.js';
 import { DIALOGUE } from './dialogue.js';
+import { SOUND } from './sound.js';
 
 const CONFIG = {
 	constants: {
@@ -22,6 +23,7 @@ const CONFIG = {
 			size: 16,
 		}
 	},
+	sound: {...SOUND},
 	sprites: {...SPRITES},
 };
 

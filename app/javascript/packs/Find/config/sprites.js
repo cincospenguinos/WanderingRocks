@@ -19,6 +19,22 @@ const SPRITES = {
 			frameHeight: 16,
 		},
 	},
+	allah: {
+		key: 'allah',
+		location: `${spriteDirLoc}/allah.png`,
+	},
+	jesus: {
+		key: 'jesus',
+		location: `${spriteDirLoc}/jesus.png`,
+	},
+	krishna: {
+		key: 'krishna',
+		location: `${spriteDirLoc}/krishna.png`,
+	},
+	yhwh: {
+		key: 'yhwh',
+		location: `${spriteDirLoc}/yhwh.png`,
+	},
 };
 
 // TODO: Add more sprites and update the ones here!

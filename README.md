@@ -41,6 +41,7 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 - [ ] There are a bunch of different player sprites
 - [ ] Players are randomly assigned a sprite
 - [ ] Movement checks in with the server before permitting movement
+- [ ] You may only play the game once per day
 
 ### Polish
 

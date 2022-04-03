@@ -15,7 +15,14 @@ export default class DialogueWindow {
 		const tiles = map.addTilesetImage(CONFIG.sprites.dialogueTileset.key);
 		this.layer = map.createLayer(0, tiles, DialogueWindow.TILE_SIZE, DialogueWindow.TILE_SIZE);
 		this.text = this.scene.add.text(0, 0, '', {
+			align: 'left',
 			fontSize: 10,
+			wordWrap: {
+		        width: this.layer.width,
+		        callback: null,
+		        callbackScope: null,
+		        useAdvancedWrap: true,
+		    },
 		});
 
 		this._currentState = 'no_dialogue';
@@ -47,12 +54,16 @@ export default class DialogueWindow {
 
 	set x(val) {
 		this.layer.x = val;
-		this.text.x = this.layer.x + this.layer.width / 2;
+		this.text.x = val;
 	}
 
 	set y(val) {
 		this.layer.y = val;
-		this.text.y = this.layer.y;
+		this.text.y = val;
+	}
+
+	set text(text) {
+
 	}
 
 	get width() {
