@@ -3,39 +3,7 @@ import { CONFIG } from '../../config/index.js';
 import PlayerInput from './PlayerInput.js';
 import PlayerSprite from './PlayerSprite.js';
 import Map from './Map.js';
-
-class DialogueSprite extends Phaser.Physics.Arcade.Sprite {
-	constructor(scene, info) {
-		super(scene, info.x, info.y, info.key);
-		scene.add.existing(this);
-		scene.physics.add.existing(this);
-
-		if (!info.name || !info.dialogueText) {
-			throw 'No information for dialogue sprite! Requires `name` and `dialogueText`';
-		}
-
-		this.name = info.name;
-		this.dialogueText = info.dialogueText;
-	}
-
-	startText() {
-		this._currentIndex = 0;
-		return this.currentText;
-	}
-
-	nextText() {
-		this._currentIndex += 1;
-		if (this._currentIndex === this.dialogueText.length) {
-			return undefined;
-		}
-
-		return this.currentText;
-	}
-
-	get currentText() {
-		return this.dialogueText[this._currentIndex];
-	}
-}
+import DialogueSprite from './DialogueSprite.js';
 
 export default class GameScene extends Phaser.Scene {
 	constructor() {
@@ -51,8 +19,13 @@ export default class GameScene extends Phaser.Scene {
 	}
 
 	preload() {
+		Object.keys(DialogueSprite.ALL_SPRITES).forEach((key) => {
+			const info = DialogueSprite.ALL_SPRITES[key];
+			const spriteInfo = CONFIG.sprites[info.key];
+			this.load.image(spriteInfo.key, spriteInfo.location);
+		});
+
 		this.load.image(CONFIG.sprites.tilesheet.key, CONFIG.sprites.tilesheet.location);
-		this.load.image(CONFIG.sprites.andre.key, CONFIG.sprites.andre.location);
 		this.load.tilemapTiledJSON(CONFIG.data.map.key, CONFIG.data.map.json);
 		this.load.aseprite('player', this._startupData.sprite.location, this._startupData.sprite.json);
 	}
@@ -63,15 +36,7 @@ export default class GameScene extends Phaser.Scene {
 		this.cameras.main.zoom = CONFIG.constants.zoomAmount;
 		this._map = new Map(this);
 
-		this._dialogueSprites = [new DialogueSprite(this, {
-			key: CONFIG.sprites.andre.key,
-			x: 80,
-			y: 80,
-			// x: 5,
-			// y: 5,
-			name: 'Andre',
-			dialogueText: CONFIG.data.dialogue.andre,
-		})];
+		this._dialogueSprites = DialogueSprite.instantiateAllWith(this);
 
 		this.player = new PlayerSprite(this, { x: 4, y: 4 });
 		this.cameras.main.startFollow(this.player);

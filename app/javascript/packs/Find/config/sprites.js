@@ -23,9 +23,17 @@ const SPRITES = {
 		key: 'allah',
 		location: `${spriteDirLoc}/allah.png`,
 	},
+	falkner: {
+		key: 'falkner',
+		location: `${spriteDirLoc}/falkner.png`,
+	},
 	jesus: {
 		key: 'jesus',
 		location: `${spriteDirLoc}/jesus.png`,
+	},
+	joyce: {
+		key: 'joyce',
+		location: `${spriteDirLoc}/joyce.png`,
 	},
 	krishna: {
 		key: 'krishna',

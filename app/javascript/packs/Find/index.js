@@ -21,5 +21,5 @@ new Phaser.Game({
 		mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
 	},
-	scene: [OpeningScene, GameScene, DialogueScene],
+	scene: [/*OpeningScene,*/ GameScene, DialogueScene],
 });

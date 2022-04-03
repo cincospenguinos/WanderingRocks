@@ -22,7 +22,7 @@ const andre = [
 	'other through college, and in the process had a boy named Hank.',
 	'Although our friendship was really tight, we had an awkward and stilted physical intimacy',
 	"that I couldn't quite figure out. It was after we left Mormonism",
-	"(turns out it's not true), that Tasha was finally able to acknowledge how she felt."
+	"(turns out it's not true), that Tasha was finally able to acknowledge how she felt.",
 	'She came out to me as gay in October of 2019.',
 	'We discussed our options, but ultimately settled on divorce (there are',
 	'folks close to me who grew up in a mixed orientation marriage, and it was not a good',
@@ -65,8 +65,20 @@ const andre = [
 	'Good luck finding!',
 ];
 
+const joyce = [
+	'Guehehehehe...',
+	'Arse full of farts...',
+	'hehehehe.......',
+];
+
+const falkner = [// Yeah, I know I misspelled his name. Shut up.
+	'TODO: My dialogue.',
+];
+
 const DIALOGUE = {
 	andre,
+	joyce,
+	falkner
 };
 
 export { DIALOGUE };
