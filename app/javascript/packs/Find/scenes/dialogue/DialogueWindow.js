@@ -17,6 +17,8 @@ export default class DialogueWindow {
 		this.text = this.scene.add.text(0, 0, '', {
 			fontSize: 10,
 		});
+
+		this._currentState = 'no_dialogue';
 	}
 
 	dialogueWith(sprite) {
@@ -24,18 +26,41 @@ export default class DialogueWindow {
 		this.text.setText(`speak to ${sprite.name}`);
 	}
 
+	interact() {
+		if (this._state === 'no_dialogue') {
+			this._state = 'in_dialogue';
+			this.text.setText(this.sprite.dialogueText);
+		} else {
+			this._state = 'no_dialogue';
+			this.visible = false;
+		}
+	}
+
+	get _state() {
+		return this._currentState;
+	}
+
+	set _state(val) {
+		this._currentState = val;
+		this.scene.scene.get('GameScene').events.emit(this._currentState);
+	}
+
 	set x(val) {
 		this.layer.x = val;
-		this.text.x = val + 4;
+		this.text.x = this.layer.x + this.layer.width / 2;
 	}
 
 	set y(val) {
 		this.layer.y = val;
-		this.text.y = val + 4;
+		this.text.y = this.layer.y;
 	}
 
 	get width() {
 		return this.layer.width;
+	}
+
+	get visible() {
+		return this.layer.alpha === 1.0;
 	}
 
 	set visible(val) {
@@ -62,4 +87,9 @@ DialogueWindow.INDEXES = {
 	left: 6,
 	top: 7,
 	right: 8,
+};
+
+DialogueWindow.STATES = {
+	noDialogue: 'no_dialogue',
+	inDialogue: 'in_dialogue',
 };

@@ -12,22 +12,30 @@ export default class DialogueScene extends Phaser.Scene {
 	}
 
 	preload() {
-		const { dialogueTileset } = CONFIG.sprites;
+		const { dialogueTileset} = CONFIG.sprites;
 		this.load.spritesheet(dialogueTileset.key, dialogueTileset.location, dialogueTileset.config)
 	}
 
 	create() {
+		this.spacebarKey = this.input.keyboard.addKey('SPACE');
+
 		this.dialogueWindow = new DialogueWindow(this);
 		this.dialogueWindow.x = CONFIG.dimensions.screen.width / 2 - this.dialogueWindow.width / 2;
 		this.dialogueWindow.y = CONFIG.dimensions.screen.height - 50;
 
 		const gameScene = this.scene.get('GameScene');
 		gameScene.events.on('dialogue_show', (spriteToShow) => {
-			this.dialogueWindow.dialogueWith(spriteToShow);
-			this.dialogueWindow.visible = true
+			if (!this.dialogueWindow.visible) {
+				this.dialogueWindow.dialogueWith(spriteToShow);
+				this.dialogueWindow.visible = true
+			}
 		});
 		gameScene.events.on('dialogue_hide', () => this.dialogueWindow.visible = false);
 	}
 
-	update() {}
+	update() {
+		if (this.dialogueWindow.visible && Phaser.Input.Keyboard.JustDown(this.spacebarKey)) {
+			this.dialogueWindow.interact();
+		}
+	}
 }

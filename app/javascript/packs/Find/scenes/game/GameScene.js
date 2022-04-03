@@ -49,6 +49,8 @@ export default class GameScene extends Phaser.Scene {
 			key: CONFIG.sprites.andre.key,
 			x: 80,
 			y: 80,
+			// x: 5,
+			// y: 5,
 			name: 'Andre',
 			dialogueText: CONFIG.data.dialogue.andre,
 		})];
@@ -56,10 +58,16 @@ export default class GameScene extends Phaser.Scene {
 		this.player = new PlayerSprite(this, { x: 4, y: 4 });
 		this.cameras.main.startFollow(this.player);
 		this._playerInput = new PlayerInput(this);
+
+		this.events.on('in_dialogue', () => this._inDialogue = true);
+		this.events.on('no_dialogue', () => this._inDialogue = false);
 	}
 
 	update() {
-		this._handleInput();
+		if (!this._inDialogue) {
+			this._handleInput();
+		}
+
 		const overlapping = this._dialogueSprites
 			.map((dialogueSprite) => Phaser.Geom.Intersects.RectangleToRectangle(this.player.body, dialogueSprite.body) ? dialogueSprite : undefined)
 			.filter(d => d)
