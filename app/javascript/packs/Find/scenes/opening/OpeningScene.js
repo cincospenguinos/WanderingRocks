@@ -86,7 +86,6 @@ export default class OpeningScene extends Phaser.Scene {
 		const topText = this.add.text(20, 20, 'Hey, can you find this for me?', textConfig);
 		topText.x = CONFIG.dimensions.screen.width / 2 - topText.width / 2
 
-		console.log(this._religiousIcon);
 		const religiousIcon = this.add.image(100, CONFIG.dimensions.screen.height / 2, this._religiousIcon.key);
 		religiousIcon.x = religiousIcon.width / 2
 		religiousIcon.setScale(0.8);

@@ -1,13 +1,13 @@
 const CREDITS = [{
-	title: "FisherG's City Tiles",
-	usedFor: 'Virtually everything',
-	message: "Thank you, FisherG! I couldn't make this without your work!",
-	url: "https://opengameart.org/content/12x12-city-tiles-top-down",
-}, {
 	title: 'Jesus Pixel Art',
 	usedFor: 'Opening, sometimes',
 	message: 'Thank you, IgnasD. Jesus is a nice touch.',
 	url: 'https://opengameart.org/content/jesus-pixel-art',
+}, {
+	title: 'Everything else I stole',
+	usedFor: 'Random things.',
+	message: 'I swiped things from the internet and messed with them, so I guess they are my work now.',
+	url: 'https://www.wikipedia.org',
 }];
 
 export { CREDITS };

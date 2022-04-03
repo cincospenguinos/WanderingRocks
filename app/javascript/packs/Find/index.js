@@ -3,6 +3,7 @@ import { CONFIG } from './config/index.js';
 import GameScene from './scenes/game/GameScene.js';
 import DialogueScene from './scenes/dialogue/DialogueScene.js';
 import OpeningScene from './scenes/opening/OpeningScene.js';
+import CreditsScene from './scenes/credits/CreditsScene.js';
 
 new Phaser.Game({
 	parent: 'game-container',
@@ -21,5 +22,5 @@ new Phaser.Game({
 		mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
 	},
-	scene: [/*OpeningScene,*/ GameScene, DialogueScene],
+	scene: [/*OpeningScene,*/ GameScene, DialogueScene, CreditsScene],
 });
