@@ -77,6 +77,7 @@ export default class OpeningScene extends Phaser.Scene {
 	}
 
 	create() {
+		this.spacebarKey = this.input.keyboard.addKey('SPACE');
 		// TODO: This is where we will setup all the network shennanigannery, if we have time
 		const textConfig = {
 			fontSize: 16,
@@ -98,7 +99,11 @@ export default class OpeningScene extends Phaser.Scene {
 		bottomText.x = CONFIG.dimensions.screen.width / 2 - bottomText.width / 2;
 	}
 
-	update() {}
+	update() {
+		if (Phaser.Input.Keyboard.JustDown(this.spacebarKey)) {
+			this.scene.start('GameScene', { religiousIcon: this._religiousIcon });
+		}
+	}
 }
 
 OpeningScene.RELIGIOUS_ICONS = [

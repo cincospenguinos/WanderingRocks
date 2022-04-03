@@ -17,6 +17,24 @@ class DialogueSprite extends Phaser.Physics.Arcade.Sprite {
 		this.name = info.name;
 		this.dialogueText = info.dialogueText;
 	}
+
+	startText() {
+		this._currentIndex = 0;
+		return this.currentText;
+	}
+
+	nextText() {
+		this._currentIndex += 1;
+		if (this._currentIndex === this.dialogueText.length) {
+			return undefined;
+		}
+
+		return this.currentText;
+	}
+
+	get currentText() {
+		return this.dialogueText[this._currentIndex];
+	}
 }
 
 export default class GameScene extends Phaser.Scene {

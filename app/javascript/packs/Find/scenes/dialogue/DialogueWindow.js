@@ -14,11 +14,11 @@ export default class DialogueWindow {
 		const map = this.scene.make.tilemap({ data, tileWidth: DialogueWindow.TILE_SIZE, tileHeight: DialogueWindow.TILE_SIZE });
 		const tiles = map.addTilesetImage(CONFIG.sprites.dialogueTileset.key);
 		this.layer = map.createLayer(0, tiles, DialogueWindow.TILE_SIZE, DialogueWindow.TILE_SIZE);
-		this.text = this.scene.add.text(0, 0, '', {
+		this._textField = this.scene.add.text(0, 0, '', {
 			align: 'left',
 			fontSize: 10,
 			wordWrap: {
-		        width: this.layer.width,
+		        width: this.layer.width - 4,
 		        callback: null,
 		        callbackScope: null,
 		        useAdvancedWrap: true,
@@ -30,13 +30,20 @@ export default class DialogueWindow {
 
 	dialogueWith(sprite) {
 		this.sprite = sprite;
-		this.text.setText(`speak to ${sprite.name}`);
+		this._textField.setText(`speak to ${sprite.name}`);
 	}
 
 	interact() {
 		if (this._state === 'no_dialogue') {
 			this._state = 'in_dialogue';
-			this.text.setText(this.sprite.dialogueText);
+			this._textField.setText(this.sprite.startText());
+			return;
+		}
+
+		const text = this.sprite.nextText();
+
+		if (text) {
+			this._textField.setText(text);
 		} else {
 			this._state = 'no_dialogue';
 			this.visible = false;
@@ -54,12 +61,12 @@ export default class DialogueWindow {
 
 	set x(val) {
 		this.layer.x = val;
-		this.text.x = val;
+		this._textField.x = val + 4;
 	}
 
 	set y(val) {
 		this.layer.y = val;
-		this.text.y = val;
+		this._textField.y = val + 4;
 	}
 
 	set text(text) {
@@ -82,7 +89,7 @@ export default class DialogueWindow {
 		}
 
 		this.layer.setAlpha(alpha);
-		this.text.setAlpha(alpha);
+		this._textField.setAlpha(alpha);
 	}
 }
 
