@@ -28,11 +28,15 @@ export default class GameScene extends Phaser.Scene {
 		this.load.image(CONFIG.sprites.tilesheet.key, CONFIG.sprites.tilesheet.location);
 		this.load.tilemapTiledJSON(CONFIG.data.map.key, CONFIG.data.map.json);
 		this.load.aseprite('player', this._startupData.sprite.location, this._startupData.sprite.json);
+		this.load.audio(CONFIG.sound.music.key, CONFIG.sound.music.location);
 	}
 
 	create() {
 		this.scene.launch('DialogueScene');
 		this.anims.createFromAseprite('player');
+
+		this._music = this.sound.add(CONFIG.sound.music.key, { volume: 0.8 });
+		this.time.delayedCall(2000, () => this._music.play());
 
 		this.cameras.main.zoom = CONFIG.constants.zoomAmount;
 		this._map = new Map(this);
@@ -45,6 +49,8 @@ export default class GameScene extends Phaser.Scene {
 
 		this.events.on('in_dialogue', () => this._inDialogue = true);
 		this.events.on('no_dialogue', () => this._inDialogue = false);
+		this.events.on('low_volume', () => this._music.setVolume(0.2));
+		this.events.on('high_volume', () => this._music.setVolume(0.8));
 	}
 
 	update() {

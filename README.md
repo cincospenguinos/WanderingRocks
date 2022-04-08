@@ -16,7 +16,7 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 	- [ ] There is a timer that shows how many minutes and seconds you have left to play
 	- [ ] The timer counts down to zero
 	- [ ] At zero, the game shuts down, showing the end screen
-- [ ] Music plays five seconds into the game scene
+- [x] Music plays two seconds into the game scene
 - [ ] The game abruptly ends after two minutes
 - [ ] You may only play the game once per day
 

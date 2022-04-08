@@ -30,11 +30,15 @@ export default class DialogueScene extends Phaser.Scene {
 				this.dialogueWindow.visible = true
 			}
 		});
-		gameScene.events.on('dialogue_hide', () => this.dialogueWindow.visible = false);
+		gameScene.events.on('dialogue_hide', () => {
+			this.dialogueWindow.visible = false;
+			gameScene.events.emit('high_volume');
+		});
 	}
 
 	update() {
 		if (this.dialogueWindow.visible && Phaser.Input.Keyboard.JustDown(this.spacebarKey)) {
+			this.scene.get('GameScene').events.emit('low_volume');
 			this.dialogueWindow.interact();
 		}
 	}
