@@ -20,6 +20,10 @@ class Tesseract {
 		});
 	}
 
+	set visible(val) {
+		this.layer.setVisible(val);
+	}
+
 	set x(val) {
 		this.layer.x = val;
 	}
@@ -74,32 +78,51 @@ export default class OpeningScene extends Phaser.Scene {
 	preload() {
 		this.load.image(CONFIG.sprites.tilesheet.key, CONFIG.sprites.tilesheet.location);
 		this.load.image(this._religiousIcon.key, this._religiousIcon.location);
+		this.load.image(CONFIG.sprites.particle.key, CONFIG.sprites.particle.location);
 	}
 
 	create() {
+		this.canSkip = false;
 		this.spacebarKey = this.input.keyboard.addKey('SPACE');
 		// TODO: This is where we will setup all the network shennanigannery, if we have time
 		const textConfig = {
 			fontSize: 16,
 			align: 'center',
 		};
-		const topText = this.add.text(20, 20, 'Hey, can you find this for me?', textConfig);
-		topText.x = CONFIG.dimensions.screen.width / 2 - topText.width / 2
 
-		const religiousIcon = this.add.image(100, CONFIG.dimensions.screen.height / 2, this._religiousIcon.key);
-		religiousIcon.x = religiousIcon.width / 2
-		religiousIcon.setScale(0.8);
+		const topTextA = this.add.text(20, 20, 'Hey there!', textConfig);
+		topTextA.x = CONFIG.dimensions.screen.width / 2 - topTextA.width / 2;
+		const religiousIcon = this.add.image(CONFIG.dimensions.screen.width / 2, CONFIG.dimensions.screen.height / 2, this._religiousIcon.key);
+
+		const topTextB = this.add.text(20, 20, 'Can you find this for me?', textConfig);
+		topTextB.x = CONFIG.dimensions.screen.width / 2 - topTextB.width / 2
+		topTextB.setVisible(false);
 
 		const tesseract = new Tesseract(this);
-		tesseract.x = 320;
+		tesseract.x = 200;
 		tesseract.y = 100;
+		tesseract.visible = false;
 
-		const bottomText = this.add.text(CONFIG.dimensions.screen.width / 2, CONFIG.dimensions.screen.height - 28, 'Thanks, I appreciate it.', textConfig);
-		bottomText.x = CONFIG.dimensions.screen.width / 2 - bottomText.width / 2;
+		this.time.addEvent({
+			delay: 5000,
+			repeat: 0,
+			callback: () => {
+				topTextA.setVisible(false);
+				religiousIcon.setVisible(false);
+				topTextB.setVisible(true);
+				tesseract.visible = true;
+			}
+		});
+
+		this.time.addEvent({
+			delay: 7500,
+			repeat: 0,
+			callback: () => this.canSkip = true,
+		});
 	}
 
 	update() {
-		if (Phaser.Input.Keyboard.JustDown(this.spacebarKey)) {
+		if (this.canSkip && (Phaser.Input.Keyboard.JustDown(this.spacebarKey) || this.input.activePointer.leftButtonDown())) {
 			this.scene.start('GameScene', { religiousIcon: this._religiousIcon });
 		}
 	}

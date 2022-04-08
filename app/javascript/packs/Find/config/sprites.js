@@ -39,6 +39,10 @@ const SPRITES = {
 		key: 'krishna',
 		location: `${spriteDirLoc}/krishna.png`,
 	},
+	particle: {
+		key: 'particle',
+		location: `${spriteDirLoc}/yellow.png`,
+	},
 	yhwh: {
 		key: 'yhwh',
 		location: `${spriteDirLoc}/yhwh.png`,
