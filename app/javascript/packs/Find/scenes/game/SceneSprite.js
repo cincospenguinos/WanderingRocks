@@ -46,10 +46,10 @@ SceneSprite.instantiateAllWith = (scene) => {
 SceneSprite.ALL_SPRITES = {
 	cardTable: {
 		key: 'cardTable',
-		x: 50,
-		y: 40,
+		x: 59 * 8,
+		y: 64,
 		text: 'Play with cards on table',
 		sceneKey: 'CardsScene',
-		onConstruct: (self) => self.setScale(0.5),
+		onConstruct: (self) => self.setScale(0.3),
 	},
 };
