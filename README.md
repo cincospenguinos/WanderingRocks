@@ -11,14 +11,15 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 
 ## MANDATORY
 
-- [ ] Movement happens with the pointer too
+- [x] Movement happens with the pointer too
+- [x] Music plays two seconds into the game scene
+- [x] The game abruptly ends after two minutes
+- [ ] World is setup
+- [ ] You may only play the game once per day
 - [ ] The timer
 	- [ ] There is a timer that shows how many minutes and seconds you have left to play
 	- [ ] The timer counts down to zero
 	- [ ] At zero, the game shuts down, showing the end screen
-- [x] Music plays two seconds into the game scene
-- [ ] The game abruptly ends after two minutes
-- [ ] You may only play the game once per day
 
 ## NICE TO HAVE
 

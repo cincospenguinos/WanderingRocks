@@ -1,4 +1,5 @@
 import { CONFIG } from '../../config/index.js';
+import SceneSprite from '../game/SceneSprite.js';
 
 export default class DialogueWindow {
 	constructor(scene) {
@@ -37,23 +38,32 @@ export default class DialogueWindow {
 
 	dialogueWith(sprite) {
 		this.sprite = sprite;
-		this._textField.setText(`speak to ${sprite.name}`);
+
+		if (sprite.name) {
+			this._textField.setText(`speak to ${sprite.name}`);
+		} else {
+			this._textField.setText(sprite.text);
+		}
 	}
 
 	interact() {
-		if (this._state === 'no_dialogue') {
-			this._state = 'in_dialogue';
-			this._textField.setText(this.sprite.startText());
-			return;
-		}
-
-		const text = this.sprite.nextText();
-
-		if (text) {
-			this._textField.setText(text);
+		if (this.sprite instanceof SceneSprite) {
+			this.sprite.start();
 		} else {
-			this._state = 'no_dialogue';
-			this.visible = false;
+			if (this._state === 'no_dialogue') {
+				this._state = 'in_dialogue';
+				this._textField.setText(this.sprite.startText());
+				return;
+			}
+
+			const text = this.sprite.nextText();
+
+			if (text) {
+				this._textField.setText(text);
+			} else {
+				this._state = 'no_dialogue';
+				this.visible = false;
+			}
 		}
 	}
 

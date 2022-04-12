@@ -5,6 +5,7 @@ import PointerInput from './PointerInput.js';
 import PlayerSprite from './PlayerSprite.js';
 import Map from './Map.js';
 import DialogueSprite from './DialogueSprite.js';
+import SceneSprite from './SceneSprite.js';
 
 class PlayerInput {
 	constructor(scene) {
@@ -45,6 +46,12 @@ export default class GameScene extends Phaser.Scene {
 			}
 		});
 
+		Object.keys(SceneSprite.ALL_SPRITES).forEach((key) => {
+			const info = SceneSprite.ALL_SPRITES[key];
+			const spriteInfo = CONFIG.sprites[info.key];
+			this.load.image(spriteInfo.key, spriteInfo.location);
+		});
+
 		this.load.image(CONFIG.sprites.tilesheet.key, CONFIG.sprites.tilesheet.location);
 		this.load.tilemapTiledJSON(CONFIG.data.map.key, CONFIG.data.map.json);
 		this.load.aseprite('player', this._startupData.sprite.location, this._startupData.sprite.json);
@@ -62,6 +69,7 @@ export default class GameScene extends Phaser.Scene {
 		this._map = new Map(this);
 
 		this._dialogueSprites = DialogueSprite.instantiateAllWith(this);
+		this._sceneSprites = SceneSprite.instantiateAllWith(this);
 
 		this.player = new PlayerSprite(this, { x: 4, y: 4 });
 		this.cameras.main.startFollow(this.player);
@@ -71,6 +79,13 @@ export default class GameScene extends Phaser.Scene {
 		this.events.on('no_dialogue', () => this._inDialogue = false);
 		this.events.on('low_volume', () => this._music.setVolume(0.2));
 		this.events.on('high_volume', () => this._music.setVolume(0.8));
+
+		this.time.delayedCall(120000, () => {
+			this.scene.stop('DialogueScene');
+			this.scene.stop('CardsScene');
+			this.scene.stop();
+			this.scene.start('CreditsScene');
+		});
 	}
 
 	update() {
@@ -78,8 +93,18 @@ export default class GameScene extends Phaser.Scene {
 			this._handleInput();
 		}
 
-		const overlapping = this._dialogueSprites
+		let overlapping = this._dialogueSprites
 			.map((dialogueSprite) => Phaser.Geom.Intersects.RectangleToRectangle(this.player.body, dialogueSprite.body) ? dialogueSprite : undefined)
+			.filter(d => d)
+		;
+
+		if (overlapping.length) {
+			this.events.emit('dialogue_show', overlapping[0]);
+			return;
+		}
+
+		overlapping = this._sceneSprites
+			.map((sceneSprite) => Phaser.Geom.Intersects.RectangleToRectangle(this.player.body, sceneSprite.body) ? sceneSprite : undefined)
 			.filter(d => d)
 		;
 

@@ -11,6 +11,10 @@ const SPRITES = {
 		location: `${spriteDirLoc}/tilesheet.png`,
 		json: `/find/json/salt_lake_city.json`,
 	},
+	cardTable: {
+		key: 'cardTable',
+		location: `${spriteDirLoc}/card_table.png`,
+	},
 	dialogueTileset: {
 		key: 'dialogueTileset',
 		location: `${spriteDirLoc}/dialogue_tileset.png`,
