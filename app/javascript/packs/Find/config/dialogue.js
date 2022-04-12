@@ -53,11 +53,11 @@ const andre = [
 	'decisions, given what I know now.',
 	"(All I really know is that I don't know jack shit.)",
 	"Anyway, I wrote my life's story here to waste the precious time you have playing",
-	'this game (you only have two minutes to do so a day!)',
+	'this game (you only have two minutes to do so each day!)',
 	'I know, I know, it was kind of mean to make you read all my embarrassing feelings',
 	'that need to stay unsaid. But I believe good art says what is usually left better',
 	"unsaid. Kafka's _Metamorphosis_ is great *because* he makes plain his abusive",
-	'relationship with his father. And I hope that FIND! is an engaging experience',
+	'relationship with his father. And I hope that Find! is an engaging experience',
 	'because of how much of myself I put into it.',
 	'Oh!',
 	'One last thing:',
@@ -72,13 +72,19 @@ const joyce = [
 ];
 
 const falkner = [// Yeah, I know I misspelled his name. Shut up.
-	'TODO: My dialogue.',
+	'Why is everyone murdering their children!?',
+	"That's not what I said!",
+];
+
+const stein = [
+	'If I told him...'
 ];
 
 const DIALOGUE = {
 	andre,
 	joyce,
-	falkner
+	falkner,
+	stein,
 };
 
 export { DIALOGUE };

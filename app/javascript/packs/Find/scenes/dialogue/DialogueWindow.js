@@ -24,8 +24,15 @@ export default class DialogueWindow {
 		        useAdvancedWrap: true,
 		    },
 		});
+		this.layer.setScale(2);
+		this._textField.setScale(2);
 
 		this._currentState = 'no_dialogue';
+
+		this._mouseDown = false;
+		this.layer.setInteractive();
+		this.layer.on('pointerdown', () => this._mouseDown = true);
+		this.layer.on('pointerup', () => this._mouseDown = false)
 	}
 
 	dialogueWith(sprite) {
@@ -48,6 +55,10 @@ export default class DialogueWindow {
 			this._state = 'no_dialogue';
 			this.visible = false;
 		}
+	}
+
+	get mouseDown() {
+		return this._mouseDown;
 	}
 
 	get _state() {

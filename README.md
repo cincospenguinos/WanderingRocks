@@ -51,3 +51,7 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 ### Polish
 
 - [ ] Get player sprites to appear behind foreground tiles
+
+## NOTES
+
+* [Use this](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/tools/#aseprite)

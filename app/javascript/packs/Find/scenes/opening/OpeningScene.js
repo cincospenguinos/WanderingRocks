@@ -122,7 +122,7 @@ export default class OpeningScene extends Phaser.Scene {
 	}
 
 	update() {
-		if (this.canSkip && (Phaser.Input.Keyboard.JustDown(this.spacebarKey) || this.input.activePointer.leftButtonDown())) {
+		if (this.canSkip && (Phaser.Input.Keyboard.JustDown(this.spacebarKey) || this.input.activePointer.isDown)) {
 			this.scene.start('GameScene', { religiousIcon: this._religiousIcon });
 		}
 	}

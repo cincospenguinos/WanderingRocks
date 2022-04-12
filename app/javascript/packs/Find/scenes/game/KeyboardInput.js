@@ -1,6 +1,6 @@
 import { CONFIG } from '../../config/index.js';
 
-export default class PlayerInput {
+export default class KeyboardInput {
 	constructor(scene) {
 		this._cursorKeys = scene.input.keyboard.createCursorKeys();
 	}
@@ -8,11 +8,11 @@ export default class PlayerInput {
 	get changeInDirections() {
 		const directionChange = { x: 0, y: 0 };
 
-		PlayerInput.DIRECTIONS
+		KeyboardInput.DIRECTIONS
 			.map(k => this._cursorKeys[k].isDown ? k : undefined)
 			.filter(b => b)
 			.forEach((k) => {
-				const directionEntry = PlayerInput.DIRECTION_MOVEMENT_MAP[k];
+				const directionEntry = KeyboardInput.DIRECTION_MOVEMENT_MAP[k];
 				directionChange[directionEntry.direction] += directionEntry.amount;
 				directionChange.animName = k;
 				directionChange.flip = false;
@@ -29,9 +29,9 @@ export default class PlayerInput {
 	}
 }
 
-PlayerInput.DIRECTIONS = ['up', 'down', 'left', 'right'];
+KeyboardInput.DIRECTIONS = ['up', 'down', 'left', 'right'];
 
-PlayerInput.DIRECTION_MOVEMENT_MAP = {
+KeyboardInput.DIRECTION_MOVEMENT_MAP = {
 	'up': {
 		direction: 'y',
 		amount: -CONFIG.dimensions.grid.size,

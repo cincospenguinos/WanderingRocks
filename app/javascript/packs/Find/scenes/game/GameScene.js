@@ -1,9 +1,25 @@
 import Phaser from 'phaser';
 import { CONFIG } from '../../config/index.js';
-import PlayerInput from './PlayerInput.js';
+import KeyboardInput from './KeyboardInput.js';
+import PointerInput from './PointerInput.js';
 import PlayerSprite from './PlayerSprite.js';
 import Map from './Map.js';
 import DialogueSprite from './DialogueSprite.js';
+
+class PlayerInput {
+	constructor(scene) {
+		this._keyboard = new KeyboardInput(scene);
+		this._pointer = new PointerInput(scene);
+	}
+
+	get changeInDirections() {
+		if (this._pointer.changeInDirections.isChanging) {
+			return this._pointer.changeInDirections;
+		}
+
+		return this._keyboard.changeInDirections;
+	}
+}
 
 export default class GameScene extends Phaser.Scene {
 	constructor() {
@@ -13,7 +29,7 @@ export default class GameScene extends Phaser.Scene {
 	init(data) {
 		// TODO: Startup data will have all of the information necessary for the game. Use it to set the player's initial information
 		this._startupData = {
-			sprite: CONFIG.sprites.player1,
+			sprite: CONFIG.sprites.player,
 			...data
 		};
 	}
@@ -23,6 +39,10 @@ export default class GameScene extends Phaser.Scene {
 			const info = DialogueSprite.ALL_SPRITES[key];
 			const spriteInfo = CONFIG.sprites[info.key];
 			this.load.image(spriteInfo.key, spriteInfo.location);
+
+			if (info.sound) {
+				this.load.audio(CONFIG.sound[info.sound].key, CONFIG.sound[info.sound].location);
+			}
 		});
 
 		this.load.image(CONFIG.sprites.tilesheet.key, CONFIG.sprites.tilesheet.location);

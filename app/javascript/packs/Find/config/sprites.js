@@ -43,6 +43,10 @@ const SPRITES = {
 		key: 'particle',
 		location: `${spriteDirLoc}/yellow.png`,
 	},
+	stein: {
+		key: 'stein',
+		location: `${spriteDirLoc}/stein.png`,
+	},
 	yhwh: {
 		key: 'yhwh',
 		location: `${spriteDirLoc}/yhwh.png`,
@@ -50,7 +54,7 @@ const SPRITES = {
 };
 
 // TODO: Add more sprites and update the ones here!
-const TOTAL_PLAYER_SPRITES = 1;
+const TOTAL_PLAYER_SPRITES = 2;
 for (let i = 1; i <= TOTAL_PLAYER_SPRITES; i++) {
 	const key = `player${i}`;
 
@@ -59,5 +63,8 @@ for (let i = 1; i <= TOTAL_PLAYER_SPRITES; i++) {
 		json: `${jsonDirLoc}/character${i}.json`,
 	};
 }
+
+SPRITES.totalPlayers = TOTAL_PLAYER_SPRITES;
+SPRITES.player = SPRITES[`player${Math.floor(Math.random() * TOTAL_PLAYER_SPRITES) + 1}`];
 
 export { SPRITES };

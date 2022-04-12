@@ -13,10 +13,18 @@ export default class DialogueSprite extends Phaser.Physics.Arcade.Sprite {
 
 		this.name = info.name;
 		this.dialogueText = info.dialogueText;
+
+		if (info.sound) {
+			const gameScene = scene.scene.get('GameScene');
+			gameScene.events.emit('low_volume');
+			this.sound = scene.sound.add(info.sound, { volume: 0.8 });
+			this.sound.on('complete', () => gameScene.events.emit('high_volume'));
+		}
 	}
 
 	startText() {
 		this._currentIndex = 0;
+		this.sound.play();
 		return this.currentText;
 	}
 
@@ -31,6 +39,14 @@ export default class DialogueSprite extends Phaser.Physics.Arcade.Sprite {
 
 	get currentText() {
 		return this.dialogueText[this._currentIndex];
+	}
+
+	get emitHighVolume() {
+		if (this.sound) {
+			return false;
+		}
+
+		return true;
 	}
 }
 
@@ -57,8 +73,15 @@ DialogueSprite.ALL_SPRITES = {
 	},
 	falkner: {
 		key: 'falkner',
-		x: 10,
-		y: 10,
+		x: 20,
+		y: 20,
 		name: 'William Faulkner',
+	},
+	stein: {
+		key: 'stein',
+		x: 30,
+		y: 60,
+		name: 'Gertrude Stein',
+		sound: 'ifIToldHim',
 	},
 };

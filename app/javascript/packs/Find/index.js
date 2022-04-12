@@ -7,7 +7,7 @@ import CreditsScene from './scenes/credits/CreditsScene.js';
 
 new Phaser.Game({
 	parent: 'game-container',
-	type: Phaser.AUTO, // TODO: May need WebGL if we're doing fancy graphics stuff
+	type: Phaser.CANVAS,
 	width: CONFIG.dimensions.screen.width,
 	height: CONFIG.dimensions.screen.height,
 	pixelArt: true,
