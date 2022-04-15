@@ -1,2 +1,3 @@
-<div id="game-container"></div>
+<% is_dev = Rails.env == 'development' %>
+<div id="game-container" data-dev="<%= is_dev %>"></div>
 <%= javascript_pack_tag 'Find/index' %>

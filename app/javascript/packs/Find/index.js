@@ -6,6 +6,14 @@ import OpeningScene from './scenes/opening/OpeningScene.js';
 import CreditsScene from './scenes/credits/CreditsScene.js';
 import CardsScene from './scenes/cards/CardsScene.js';
 
+
+const isDev = document.getElementById('game-container').dataset.dev === 'true';
+const scene = [GameScene, DialogueScene, CardsScene, CreditsScene];
+
+if (isDev) {
+	scene.push(OpeningScene);
+}
+
 new Phaser.Game({
 	parent: 'game-container',
 	type: Phaser.CANVAS,
@@ -15,7 +23,7 @@ new Phaser.Game({
 	physics: {
 		default: 'arcade',
 		arcade: {
-			debug: false,
+			debug: isDev,
 			gravity: 0,
 		},
 	},
@@ -23,5 +31,5 @@ new Phaser.Game({
 		mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
 	},
-	scene: [OpeningScene, GameScene, DialogueScene, CardsScene, CreditsScene],
+	scene,
 });
