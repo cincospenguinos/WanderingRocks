@@ -8,9 +8,7 @@ export default class DialogueScene extends Phaser.Scene {
 		super({ key: 'DialogueScene' });
 	}
 
-	init() {
-		console.log('Booting up dialogue scene!');
-	}
+	init() {}
 
 	preload() {
 		const { dialogueTileset} = CONFIG.sprites;

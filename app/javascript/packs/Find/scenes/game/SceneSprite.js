@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { STATE } from '../../state/index.js';
 
 export default class SceneSprite extends Phaser.Physics.Arcade.Sprite {
 	constructor(scene, info) {
@@ -19,7 +20,8 @@ export default class SceneSprite extends Phaser.Physics.Arcade.Sprite {
 	}
 
 	start() {
-		this.scene.scene.switch(this._sceneKey);
+		this.scene.events.emit('disable_input');
+		this.scene.scene.launch(this._sceneKey);
 	}
 
 	get text() {
@@ -51,5 +53,10 @@ SceneSprite.ALL_SPRITES = {
 		text: 'Play with cards on table',
 		sceneKey: 'CardsScene',
 		onConstruct: (self) => self.setScale(0.3),
+	},
+	nokia: {
+		key: 'nokia',
+		text: 'Play with this random phone',
+		sceneKey: 'NokiaScene',
 	},
 };

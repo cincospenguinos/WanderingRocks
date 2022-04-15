@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_204924) do
+ActiveRecord::Schema.define(version: 2022_04_15_162213) do
+
+  create_table "finds", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "nokia_location", default: "{\"x\":22,\"y\":22}"
+  end
 
   create_table "song_plays", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false

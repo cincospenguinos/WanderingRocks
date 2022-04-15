@@ -1,3 +1,5 @@
 class FindGameController < ApplicationController
-  def index; end
+  def index
+    @game = Find.current_game
+  end
 end

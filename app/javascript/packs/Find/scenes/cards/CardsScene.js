@@ -79,6 +79,9 @@ export default class CardsScene extends Phaser.Scene {
 	}
 
 	create() {
+		this.cameras.main.setBackgroundColor('#000000');
+		this.scene.get('GameScene').events.emit('disable_input');
+
 		this._upCards = [];
 		CardsScene.ALL_CARDS.forEach((card) => {
 			const x = Math.floor(Math.random() * 350 + 50);
@@ -137,7 +140,11 @@ export default class CardsScene extends Phaser.Scene {
 			fontSize: 20,
 		});
 		this.leaveText.setInteractive()
-			.on('pointerup', () => this.scene.switch('GameScene'))
+			.on('pointerup', () => {
+				this.scene.stop();
+				this.scene.get('GameScene').events.emit('enable_input');
+				this.scene.resume('GameScene');
+			})
 		;
 	}
 

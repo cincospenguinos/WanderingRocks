@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { CONFIG } from '../../config/index.js';
+import { STATE } from '../../state/index.js';
 import KeyboardInput from './KeyboardInput.js';
 import PointerInput from './PointerInput.js';
 import PlayerSprite from './PlayerSprite.js';
@@ -11,14 +12,23 @@ class PlayerInput {
 	constructor(scene) {
 		this._keyboard = new KeyboardInput(scene);
 		this._pointer = new PointerInput(scene);
+		this._disabled = false;
 	}
 
 	get changeInDirections() {
+		if (this._disabled) {
+			return {};
+		}
+
 		if (this._pointer.changeInDirections.isChanging) {
 			return this._pointer.changeInDirections;
 		}
 
 		return this._keyboard.changeInDirections;
+	}
+
+	set disabled(val) {
+		this._disabled = val;
 	}
 }
 
@@ -53,6 +63,7 @@ export default class GameScene extends Phaser.Scene {
 		});
 
 		this.load.image(CONFIG.sprites.tilesheet.key, CONFIG.sprites.tilesheet.location);
+		this.load.image(CONFIG.sprites.nokia.key, CONFIG.sprites.nokia.location);
 		this.load.tilemapTiledJSON(CONFIG.data.map.key, CONFIG.data.map.json);
 		this.load.aseprite('player', this._startupData.sprite.location, this._startupData.sprite.json);
 		this.load.audio(CONFIG.sound.music.key, CONFIG.sound.music.location);
@@ -79,16 +90,19 @@ export default class GameScene extends Phaser.Scene {
 		this.events.on('no_dialogue', () => this._inDialogue = false);
 		this.events.on('low_volume', () => this._music.setVolume(0.2));
 		this.events.on('high_volume', () => this._music.setVolume(0.8));
+		this.events.on('disable_input', () => this._playerInput.disabled = true);
+		this.events.on('enable_input', () => this._playerInput.disabled = false);
 
-		this.time.delayedCall(120000, () => {
-			this.scene.stop('DialogueScene');
-			this.scene.stop('CardsScene');
-			this.scene.stop();
-			this.scene.start('CreditsScene');
-		});
+		this._startTime = new Date();
 	}
 
 	update() {
+		const delay = 120000;
+		if (new Date() - this._startTime > delay) {
+			this._endGame();
+			return;
+		}
+
 		if (!this._inDialogue) {
 			this._handleInput();
 		}
@@ -134,5 +148,13 @@ export default class GameScene extends Phaser.Scene {
 		} else {
 			this.player.setFrame(0);
 		}
+	}
+
+	_endGame() {
+		this.scene.get('NokiaScene').events.emit('exit');
+		this.scene.stop('DialogueScene');
+		this.scene.stop('CardsScene');
+		this.scene.stop();
+		this.scene.start('CreditsScene');
 	}
 }
