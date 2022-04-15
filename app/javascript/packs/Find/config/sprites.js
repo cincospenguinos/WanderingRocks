@@ -39,6 +39,11 @@ const SPRITES = {
 		key: 'joyce',
 		location: `${spriteDirLoc}/joyce.png`,
 	},
+	kafka: {
+		key: 'kafka',
+		location: `${spriteDirLoc}/kafka.png`,
+		json: `${jsonDirLoc}/kafka.json`,
+	},
 	krishna: {
 		key: 'krishna',
 		location: `${spriteDirLoc}/krishna.png`,

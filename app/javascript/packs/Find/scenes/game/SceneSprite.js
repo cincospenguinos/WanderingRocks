@@ -58,5 +58,6 @@ SceneSprite.ALL_SPRITES = {
 		key: 'nokia',
 		text: 'Play with this random phone',
 		sceneKey: 'NokiaScene',
+		onConstruct: (self) => self.setScale(0.25),
 	},
 };

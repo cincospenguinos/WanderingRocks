@@ -7,6 +7,7 @@ import PlayerSprite from './PlayerSprite.js';
 import Map from './Map.js';
 import DialogueSprite from './DialogueSprite.js';
 import SceneSprite from './SceneSprite.js';
+import MovingSprite from './MovingSprite.js';
 
 class PlayerInput {
 	constructor(scene) {
@@ -62,6 +63,12 @@ export default class GameScene extends Phaser.Scene {
 			this.load.image(spriteInfo.key, spriteInfo.location);
 		});
 
+		Object.keys(MovingSprite.ALL_SPRITES).forEach((key) => {
+			const info = MovingSprite.ALL_SPRITES[key];
+			const spriteInfo = CONFIG.sprites[info.key];
+			this.load.aseprite(spriteInfo.key, spriteInfo.location, spriteInfo.json);
+		});
+
 		this.load.image(CONFIG.sprites.tilesheet.key, CONFIG.sprites.tilesheet.location);
 		this.load.image(CONFIG.sprites.nokia.key, CONFIG.sprites.nokia.location);
 		this.load.tilemapTiledJSON(CONFIG.data.map.key, CONFIG.data.map.json);
@@ -81,6 +88,7 @@ export default class GameScene extends Phaser.Scene {
 
 		this._dialogueSprites = DialogueSprite.instantiateAllWith(this);
 		this._sceneSprites = SceneSprite.instantiateAllWith(this);
+		this._movingSprites = MovingSprite.instantiateAllWith(this);
 
 		this.player = new PlayerSprite(this, { x: 4, y: 4 });
 		this.cameras.main.startFollow(this.player);
