@@ -11,6 +11,17 @@ export default class NokiaScene extends Phaser.Scene {
 		this._element = document.createElement('div');
 		this._element.setAttribute('style', 'display: flex; flex-direction: column; align-items: center;');
 		this._element.innerHTML = NokiaScene.ALL_GAMES[data.key];
+
+		const exitButton = document.createElement('button');
+		exitButton.innerHTML = 'Leave'
+		exitButton.addEventListener('click', () => {
+			const container = document.getElementById('game-container');
+			container.querySelector('canvas').setAttribute('style', '');
+			this._element.remove();
+			this.scene.stop();
+			this.scene.get('GameScene').events.emit('enable_input');
+		});
+		this._element.append(exitButton)
 	}
 
 	preload() {}
@@ -22,7 +33,6 @@ export default class NokiaScene extends Phaser.Scene {
 
 		this.events.on('exit', () => {
 			container.querySelector('canvas').setAttribute('style', '');
-			STATE.channel.submit('inventory_change', { nokia: 'dropped' });
 			this._element.remove();
 			this.scene.stop();
 		});

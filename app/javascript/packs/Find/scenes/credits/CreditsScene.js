@@ -47,7 +47,7 @@ export default class CreditsScene extends Phaser.Scene {
 				fontSize: 12,
 				align: 'center',
 				wordWrap: {
-			        width: parens.width - 20,
+			        width: parens.width - 100,
 			        callback: null,
 			        callbackScope: null,
 			        useAdvancedWrap: true,
