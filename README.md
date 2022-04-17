@@ -11,8 +11,8 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 
 ## MANDATORY
 
-- [ ] Complete the world
-- [ ] You may only play the game once per day
+- [x] You may only play the game once per day
+- [x] Complete the world
 - [x] A nokia phone that you can pick up and play _La Mort Voit_
 - [x] Franz Kafka walks around, and all the tiles surrounding him disappear as he walks
 
@@ -31,7 +31,7 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 	- [ ] Trigger ability to leave it by hitting spacebar
 - [ ] Create a whole bunch of interactable events
 	- [ ] Typing in the konami code causes you to fall to the bottom of the screen and allows you to fly, irrespective of location
-	- [ ] An iframe of _La Mort Voit_ from a Nokia phone
+	- [x] An iframe of _La Mort Voit_ from a Nokia phone
 	- [ ] An iframe of _FATHER_ from a television screen
 	- [ ] The song "Dead" by They Might Be Giants
 	- [x] Gertrude Stein's portrait of Picasso, "If I Told Him"

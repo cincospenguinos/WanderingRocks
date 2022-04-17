@@ -44,6 +44,8 @@ export default class GameScene extends Phaser.Scene {
 			sprite: CONFIG.sprites.player,
 			...data
 		};
+
+		localStorage.setItem('lastPlayed', new Date());
 	}
 
 	preload() {

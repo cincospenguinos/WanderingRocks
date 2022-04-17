@@ -12,10 +12,10 @@ import SceneSprite from './scenes/game/SceneSprite.js';
 const gameContainer = document.getElementById('game-container');
 
 const isDev = gameContainer.dataset.dev === 'true';
-const scene = [GameScene, DialogueScene, CardsScene, NokiaScene, CreditsScene];
+let scene = [GameScene, DialogueScene, CardsScene, NokiaScene, CreditsScene];
 
-if (isDev) {
-	scene.push(OpeningScene);
+if (!isDev) {
+	scene = [OpeningScene, ...scene];
 }
 
 SceneSprite.ALL_SPRITES.nokia = {

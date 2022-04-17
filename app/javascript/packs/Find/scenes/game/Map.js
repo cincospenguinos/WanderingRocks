@@ -6,6 +6,7 @@ export default class Map {
 		this._tileset = this._map.addTilesetImage(CONFIG.data.map.tilesheetKey, CONFIG.sprites.tilesheet.key);
 		this._layers = {};
 		Map.LAYERS.forEach(layer => this._layers[layer] = this._map.createLayer(layer, this._tileset, 0, 0));
+		scene.physics.world.setBounds(0, 0, this._tileset.width, this._tileset.height);
 	}
 
 	canMoveTo(pos) {

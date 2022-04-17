@@ -24,7 +24,10 @@ export default class DialogueSprite extends Phaser.Physics.Arcade.Sprite {
 
 	startText() {
 		this._currentIndex = 0;
-		this.sound.play();
+
+		if (this.sound) {
+			this.sound.play();
+		}
 		return this.currentText;
 	}
 

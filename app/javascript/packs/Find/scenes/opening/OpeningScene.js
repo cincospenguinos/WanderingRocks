@@ -82,6 +82,20 @@ export default class OpeningScene extends Phaser.Scene {
 	}
 
 	create() {
+		const dateLastPlayed = localStorage.getItem('lastPlayed');
+		
+		if (dateLastPlayed) {
+			const lastPlayed = new Date(dateLastPlayed);
+			const now = new Date();
+
+			if ((now - lastPlayed) / (1000 * 60 * 60 * 24) < 1) {
+				this.add.text(130, 20, "I'm sorry, but you only live once", textConfig);
+				this.add.image(CONFIG.dimensions.screen.width / 2, CONFIG.dimensions.screen.height / 2, this._religiousIcon.key);
+				this.add.text(250, 350, '(per day)', textConfig);
+				return;
+			}
+		}
+
 		this.canSkip = false;
 		this.spacebarKey = this.input.keyboard.addKey('SPACE');
 		// TODO: This is where we will setup all the network shennanigannery, if we have time
