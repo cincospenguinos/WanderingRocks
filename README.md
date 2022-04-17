@@ -14,8 +14,7 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 - [ ] Complete the world
 - [ ] You may only play the game once per day
 - [x] A nokia phone that you can pick up and play _La Mort Voit_
-- [ ] A telescope to see where somebody else is
-- [ ] Franz Kafka walks around, and all the tiles surrounding him disappear as he walks
+- [x] Franz Kafka walks around, and all the tiles surrounding him disappear as he walks
 
 ## NICE TO HAVE
 

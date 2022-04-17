@@ -11,6 +11,14 @@ export default class Map {
 	canMoveTo(pos) {
 		return this._layers['Wall'].getTileAtWorldXY(pos.x, pos.y) === null;
 	}
+
+	get map() {
+		return this._map;
+	}
+
+	get tileset() {
+		return this._tileset;
+	}
 }
 
 Map.LAYERS = ['Ground', 'Wall'];
