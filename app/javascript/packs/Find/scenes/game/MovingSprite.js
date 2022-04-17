@@ -83,34 +83,69 @@ const kafkaPresence = new KafkaPresence();
 MovingSprite.ALL_SPRITES = {
 	kafka: {
 		key: 'kafka',
-		x: 100,
-		y: 70,
+		x: 36 * 8,
+		y: 43 * 8,
 		tweens: [{
 			props: {
-				x: { from: 100, to: 200 }
+				x: { from: 36 * 8, to: 42 * 8 }
 			},
 			direction: 'right',
-			duration: 3000,
+			duration: 2000,
 		}, {
 			props: {
-				y: { from: 70, to: 200 },
-			},
-			direction: 'down',
-			delay: 2000,
-			duration: 3300,
-		}, {
-			props: {
-				y: { from: 200, to: 70 },
+				y: { from: 43 * 8, to: 24 * 8 },
 			},
 			direction: 'up',
 			delay: 2000,
-			duration: 3300,
+			duration: 4000,
 		}, {
 			props: {
-				x: { from: 200, to: 100 }
+				x: { from: 42 * 8, to: 54 * 8 }
+			},
+			direction: 'right',
+			delay: 2200,
+			duration: 2000,
+		}, {
+			props: {
+				y: { from: 24 * 8, to: 32 * 8 }
+			},
+			direction: 'down',
+			duration: 3000,
+			delay: 2000,
+		}, {
+			props: {
+				x: { from: 54 * 8, to: 48 * 8 }
 			},
 			direction: 'left',
+			delay: 2200,
+			duration: 1500,
+		}, {
+			props: {
+				y: { from: 32 * 8, to: 22 * 8 }
+			},
+			direction: 'up',
 			duration: 3000,
+			delay: 2000,
+		}, {
+			props: {
+				x: { from: 48 * 8, to: 33 * 8 }
+			},
+			direction: 'left',
+			duration: 5000,
+			delay: 5000,
+		}, {
+			props: {
+				y: { from: 22 * 8, to: 43 * 8 }
+			},
+			direction: 'down',
+			duration: 3800,
+			delay: 1000,
+		}, {
+			props: {
+				x: { from: 33 * 8, to: 36 * 8 }
+			},
+			direction: 'right',
+			duration: 800,
 			delay: 2000,
 		}],
 		timelineConf: {

@@ -62,6 +62,12 @@ export default class GameScene extends Phaser.Scene {
 		Object.keys(SceneSprite.ALL_SPRITES).forEach((key) => {
 			const info = SceneSprite.ALL_SPRITES[key];
 			const spriteInfo = CONFIG.sprites[info.key];
+
+			if (spriteInfo.json) {
+				this.load.aseprite(spriteInfo.key, spriteInfo.location, spriteInfo.json);
+				return;
+			}
+
 			this.load.image(spriteInfo.key, spriteInfo.location);
 		});
 
@@ -92,7 +98,7 @@ export default class GameScene extends Phaser.Scene {
 		this._sceneSprites = SceneSprite.instantiateAllWith(this);
 		this._movingSprites = MovingSprite.instantiateAllWith(this);
 
-		this.player = new PlayerSprite(this, { x: 4, y: 4 });
+		this.player = new PlayerSprite(this, { x: 32 * 8 - 4, y: 48 * 8 - 4 });
 		this.cameras.main.startFollow(this.player);
 		this._playerInput = new PlayerInput(this);
 

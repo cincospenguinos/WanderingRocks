@@ -2,19 +2,15 @@ import Phaser from 'phaser';
 import { CONFIG } from '../../config/index.js';
 import { STATE } from '../../state/index.js';
 
-const laMortVoit = `<iframe scrolling="no" style="border: none;" width="500" height="500" src="https://cincospenguinos.github.io/LaMortVoit/" />`;
-
 export default class NokiaScene extends Phaser.Scene {
 	constructor() {
 		super({ key: 'NokiaScene' });
 	}
 
-	init(playerPos) {
-		STATE.channel.submit('inventory_change', { nokia: 'taken' });
+	init(data) {
 		this._element = document.createElement('div');
 		this._element.setAttribute('style', 'display: flex; flex-direction: column; align-items: center;');
-		this._element.innerHTML = laMortVoit;
-		this._playerPos = playerPos;
+		this._element.innerHTML = NokiaScene.ALL_GAMES[data.key];
 	}
 
 	preload() {}
@@ -33,4 +29,12 @@ export default class NokiaScene extends Phaser.Scene {
 	}
 
 	update() {}
+}
+
+const nokia = `<iframe scrolling="no" style="border: none;" width="500" height="500" src="https://cincospenguinos.github.io/LaMortVoit/" />`;
+const father = `<iframe scrolling="no" style="border: none;" width="500" height="500" src="https://cincospenguinos.github.io/FATHER/" />`
+
+NokiaScene.ALL_GAMES = {
+	nokia,
+	father,
 }

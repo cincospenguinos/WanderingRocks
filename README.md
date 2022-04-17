@@ -16,6 +16,16 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 - [x] A nokia phone that you can pick up and play _La Mort Voit_
 - [x] Franz Kafka walks around, and all the tiles surrounding him disappear as he walks
 
+### Vignettes and things
+
+- [x] Television that plays _FATHER_
+- [ ] One missionary wandering around, another you can talk to and he "bears" his testimony in French
+- [ ] A man fresh out of prison asking you for money
+- [ ] A sign that indicates that the dev is out for lunch
+- [ ] A pantsless schizophrenic who yells obscenities
+- [ ] A bundle of bananas on wheels driving by
+
+
 ## NICE TO HAVE
 
 - [ ] Create a whole bunch of vignettes
@@ -37,7 +47,7 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 	- [x] Gertrude Stein's portrait of Picasso, "If I Told Him"
 	- [ ] A moving cubist portrait
 	- [ ] Rite of Spring! Just sequences of the Rite of Spring!
-	- [ ] There is a windowed scene of a bunch of cards that you can move around. Moving them into the order 1337 unlocks a door somewhere
+	- [x] There is a windowed scene of a bunch of cards that you can move around. Moving them into the order 1337 unlocks a door somewhere
 	- [ ] Somewhere, somehow, the player can trigger [the sound byte of "The Animation Show" where the guy says "IT'S LIKE I CAN TOUCH YOU!!!!"](https://youtu.be/pMQ-t3nGzrI?t=317)
 - [ ] All the player sprites
 	- [ ] There are three women sprites

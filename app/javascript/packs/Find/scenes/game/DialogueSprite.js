@@ -64,8 +64,8 @@ DialogueSprite.instantiateAllWith = (scene) => {
 DialogueSprite.ALL_SPRITES = {
 	andre: {
 		key: 'andre',
-		x: 300,
-		y: 20,
+		x: 15 * 8 - 4,
+		y: 35 * 8 - 4,
 		name: 'Andre',
 	},
 	joyce: {
@@ -76,14 +76,14 @@ DialogueSprite.ALL_SPRITES = {
 	},
 	falkner: {
 		key: 'falkner',
-		x: 200,
-		y: 80,
+		x: 17 * 8 - 6,
+		y: 25 * 8,
 		name: 'William Faulkner',
 	},
 	stein: {
 		key: 'stein',
-		x: 340,
-		y: 50,
+		x: 37 * 8,
+		y: 19 * 8,
 		name: 'Gertrude Stein',
 		sound: 'ifIToldHim',
 	},
