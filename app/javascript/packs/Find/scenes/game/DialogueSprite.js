@@ -92,5 +92,11 @@ DialogueSprite.ALL_SPRITES = {
 		x: 60 * 8 + 5,
 		y: 48 * 8 + 1,
 		name: 'Grendel',
-	}
+	},
+	missionary: {
+		key: 'missionary',
+		x: 25 * 8,
+		y: 58 * 8 + 4,
+		name: 'a missionary',
+	},
 };

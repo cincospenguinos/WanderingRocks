@@ -64,7 +64,7 @@ const andre = [
 	"1337 is the solution to one of the puzzles.",
 	"At the time of writing this, there aren't any puzzles, but we'll see what I can churn",
 	"out in the next... 15 hours? Wow, is that all the time I have?",
-	"Truly is a game dev project.",
+	"This really is a game dev project!",
 	"Please enjoy _Find!_.",
 ];
 
@@ -91,12 +91,30 @@ const grendel = [
 	'I misunderstood: I thought it an advantage.',
 ];
 
+const missionary = [
+	"Bonjour! Je voudrais partager mon temoinage de la veracite de l'Evangile de Jesus Christ,",
+	"l'Evangile revelee a travers son prophet, Joseph Smith, qui a acquiee quelques plaques d'or.",
+	"Ces plaques d'or etaient tres important pour les Mormons (ou, comme nous disons maintenant,",
+	"les membres de l'Eglise de Jesus Christ des Saints des Dernier Jours, parce que notre prophet",
+	"qui nous dirige aujourd'hui nous a dit que c'est mauvais utilise les noms il n'aime pas).",
+	"Est-ce que j'ai dit que les plaques d'or sont important pour les Mormons? Je me trompe.",
+	"Les plaques d'or sont important pour tout le monde, meme vous, si vous ecoutez.",
+	"Mon message vient de ces plaques d'or, parce que mes parents m'ont dit qu'ils ne vont pas",
+	"payer mes etudes a l'universite si je ne fais pas ce que je fais maintenant avec vous.",
+	"S'il vous plait, ecoutez de mon message, parce que je sais que c'est vrait.",
+	"Je sais que c'est vrait parce que j'ai resenti l'esprit apres beacoup d'angoisse--",
+	"l'angoisse cause par le fait que je m'enbranle--",
+	"et Jesus m'a dit que s'enbraler est mal, et il a ete blesse a cause de ca!",
+	"(... he's continuing to ramble--it would be wise to back away now...)",
+];
+
 const DIALOGUE = {
 	andre,
 	joyce,
 	falkner,
 	stein,
 	grendel,
+	missionary,
 };
 
 export { DIALOGUE };

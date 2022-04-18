@@ -73,6 +73,10 @@ const SPRITES = {
 		location: `${spriteDirLoc}/television.png`,
 		json: `${jsonDirLoc}/television.json`,
 	},
+	missionary: {
+		key: 'missionary',
+		location: `${spriteDirLoc}/missionary.png`,
+	},
 	yhwh: {
 		key: 'yhwh',
 		location: `${spriteDirLoc}/yhwh.png`,
