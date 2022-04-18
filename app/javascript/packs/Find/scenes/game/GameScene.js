@@ -116,7 +116,7 @@ export default class GameScene extends Phaser.Scene {
 
 		this.input.keyboard.on('keycombomatch', () => {
 			this._konamiEnabled = true;
-	        this.player.setGravity(10);
+	        this.player.setGravityY(10);
 	    });
 	}
 
@@ -164,17 +164,17 @@ export default class GameScene extends Phaser.Scene {
 			if (this._konamiEnabled) {
 				const nextPos = { x: this.player.x + currentDirections.x, y: this.player.y + currentDirections.y };
 				if (nextPos.x < this.player.x) {
-					this.player.setAccelerationX(-20);
+					this.player.setAccelerationX(-40);
 				} else if (nextPos.x > this.player.x) {
-					this.player.setAccelerationX(20);
+					this.player.setAccelerationX(40);
 				} else {
 					this.player.setAccelerationX(0);
 				}
 
 				if (nextPos.y < this.player.y) {
-					this.player.setAccelerationY(-20);
+					this.player.setAccelerationY(-40);
 				} else if (nextPos.y > this.player.y) {
-					this.player.setAccelerationY(20);
+					this.player.setAccelerationY(40);
 				} else {
 					this.player.setAccelerationY(0);
 				}

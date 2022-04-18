@@ -31,6 +31,10 @@ const SPRITES = {
 		key: 'grendel',
 		location: `${spriteDirLoc}/grendel.png`,
 	},
+	grammaphone: {
+		key: 'grammaphone',
+		location: `${spriteDirLoc}/grammaphone.png`,
+	},
 	allah: {
 		key: 'allah',
 		location: `${spriteDirLoc}/allah.png`,

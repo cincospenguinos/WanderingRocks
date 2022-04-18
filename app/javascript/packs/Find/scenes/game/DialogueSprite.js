@@ -99,4 +99,11 @@ DialogueSprite.ALL_SPRITES = {
 		y: 58 * 8 + 4,
 		name: 'a missionary',
 	},
+	grammaphone: {
+		key: 'grammaphone',
+		x: 3 * 8,
+		y: 59 * 8,
+		name: 'a grammaphone',
+		sound: 'noSurprises',
+	},
 };

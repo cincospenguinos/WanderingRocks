@@ -48,6 +48,9 @@ const dustyTome = `
 		#content {
 			background-color: white;
 			color: black;
+			max-width: 800px;
+		    max-height: 500px;
+		    overflow-y: auto;
 		}
     
     #content p pre {

@@ -13,6 +13,10 @@ const SOUND = {
 		key: 'airHorn',
 		location: `${soundDir}/airhorn.mp3`,
 	},
+	noSurprises: {
+		key: 'noSurprises',
+		location: `${soundDir}/no_surprises.mp3`,
+	},
 };
 
 export { SOUND };

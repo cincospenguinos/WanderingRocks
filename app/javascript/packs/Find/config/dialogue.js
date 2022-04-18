@@ -108,6 +108,10 @@ const missionary = [
 	"(... he's continuing to ramble--it would be wise to back away now...)",
 ];
 
+const grammaphone = [
+	"Play it quietly; the missionary isn't allowed to listen...",
+];
+
 const DIALOGUE = {
 	andre,
 	joyce,
@@ -115,6 +119,7 @@ const DIALOGUE = {
 	stein,
 	grendel,
 	missionary,
+	grammaphone,
 };
 
 export { DIALOGUE };
