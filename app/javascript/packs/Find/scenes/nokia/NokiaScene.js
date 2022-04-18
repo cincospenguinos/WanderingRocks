@@ -58,9 +58,22 @@ const dustyTome = `
 		<h2>Flerlana: A Guide</h2>
 		<p>The language of Flerlana is a self-contradicting one: it has an alphabet virtually identical to the roman alphabet, and
 		yet it couches itself in its own script. It borrows heavily from Latin, English, French, and a variety of Central African
-		dialects, but still insists that it is a construction all its own. Its literature is imaginary, and yet it is written in
-		the hearts and minds of those who know it. One cannot help but wonder what would cause its emergance as a mode of communication,
-		yet is fundamentally designed to not communcate.
+		dialects, but still insists that it is a construction all its own.
+		</p>
+		<p>The only fragments of the language left are found within a journal of a Utah man. The contents of the journal aren't terribly 
+		interesting--the details of a life in an past Mormon exhusband and father--but the work is peppered with snippets of Flerlana. The 
+		journal would have been used as fuel for a campfire were the remnants of Flerlana not discovered. Thankfully for those of us in 
+		linguistics, the fragments have been isolated and extracted.
+		</p>
+		<p>As far as we can tell, the name of the language simply translates to "Flower Tongue." Its script is something like Nepali, with its 
+		words connected by a vine and sequences of words separated by white space, but unlike Arabic or Hebrew it is read left to right. Due to 
+		limitations in time and budget, all excerpts of Flerlana in this text will be provided in the Roman alphabet that best matches the sounds 
+		of the individual letters.
+		</p>
+		<p>Its literature is imaginary, and yet it is written in the hearts and minds of those who know it. One cannot help but wonder what would 
+		cause its emergance as a mode of communication, yet is fundamentally designed to not communicate. Communication requires an audience, 
+		but the audience of messages in Flerlana are non-existent. Who would invent such a language, and who would take the time to learn it only 
+		to read some scraps?
 		</p>
 		<p>We can only speculate. As time goes forward, we will discover more of it, like flowers on the wild cacti in the desert.</p>
 		<h3>Grammar</h3>
