@@ -12,7 +12,7 @@ const CREDITS = [{
 	title: 'Everything else I stole',
 	usedFor: 'Random things.',
 	message: 'I swiped things from the internet and messed with them, so I guess they are my work now.',
-	url: 'https://www.wikipedia.org',
+	url: 'https://cincospenguinos.itch.io',
 }];
 
 export { CREDITS };

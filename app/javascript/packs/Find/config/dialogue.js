@@ -1,11 +1,11 @@
 const andre = [
 	"Hey! You found me!",
-	"I know that putting myself in the game is, like, way too much meta,",
+	"I know that putting myself in the game is, like, way too meta,",
 	"but I thought it would be a fun way to talk to you, the player, directly.",
 	"I worry that I come across as a grouchy know-it-all in class. The fears surrounding that",
 	"perception don't come from anything anyone has said--instead, they come from countless",
 	"years of emotional trauma.",
-	"No, I won't burden you with all that information. Just know that it's there.",
+	"No, I won't burden you with that information. Just know that it's there.",
 	"I've mentioned before that I speak French. I really wish I could say that it was due to",
 	"my name, that I learned from my parents or something, but nope, I learned French from",
 	"an LDS mission in the Congo.",
@@ -75,8 +75,8 @@ const joyce = [
 ];
 
 const falkner = [// Yeah, I know I misspelled his name. Shut up.
-	'Why is everyone murdering their children!?',
-	"That's not what I said!",
+	'Why is every writer going out and murdering their children!?',
+	"That's not what I meant!",
 ];
 
 const stein = [
