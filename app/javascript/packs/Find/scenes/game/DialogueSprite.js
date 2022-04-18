@@ -87,4 +87,10 @@ DialogueSprite.ALL_SPRITES = {
 		name: 'Gertrude Stein',
 		sound: 'ifIToldHim',
 	},
+	grendel: {
+		key: 'grendel',
+		x: 60 * 8 + 5,
+		y: 48 * 8 + 1,
+		name: 'Grendel',
+	}
 };

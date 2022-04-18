@@ -8,7 +8,9 @@ export default class DialogueScene extends Phaser.Scene {
 		super({ key: 'DialogueScene' });
 	}
 
-	init() {}
+	init() {
+		this._lastClicked = new Date();
+	}
 
 	preload() {
 		const { dialogueTileset} = CONFIG.sprites;
@@ -39,7 +41,14 @@ export default class DialogueScene extends Phaser.Scene {
 	}
 
 	update() {
-		if (this.dialogueWindow.visible && (Phaser.Input.Keyboard.JustDown(this.spacebarKey) || this.dialogueWindow.mouseDown)) {
+		if (!this.dialogueWindow.visible) {
+			return;
+		}
+
+		const now = new Date();
+		const pastTime = now - this._lastClicked > 600;
+		if (pastTime && (Phaser.Input.Keyboard.JustDown(this.spacebarKey) || this.dialogueWindow.mouseDown)) {
+			this._lastClicked = new Date();
 			this.scene.get('GameScene').events.emit('low_volume');
 			this.dialogueWindow.interact();
 		}

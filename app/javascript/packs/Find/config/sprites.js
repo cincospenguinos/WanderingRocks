@@ -23,6 +23,10 @@ const SPRITES = {
 			frameHeight: 16,
 		},
 	},
+	grendel: {
+		key: 'grendel',
+		location: `${spriteDirLoc}/grendel.png`,
+	},
 	allah: {
 		key: 'allah',
 		location: `${spriteDirLoc}/allah.png`,

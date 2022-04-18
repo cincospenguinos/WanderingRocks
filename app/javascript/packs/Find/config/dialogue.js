@@ -83,11 +83,20 @@ const stein = [
 	'If I told him...'
 ];
 
+const grendel = [
+	'The dragon put a charm on me: no weapon can cut me.',
+	'I can walk up to the meadhall whenever I please, and they are powerless.',
+	'My heart has grown dark because of that.',
+	"I'm invulnerable, and now as solitary as one tree in a vast landscape of coal.",
+	'I misunderstood: I thought it an advantage.',
+];
+
 const DIALOGUE = {
 	andre,
 	joyce,
 	falkner,
 	stein,
+	grendel,
 };
 
 export { DIALOGUE };
