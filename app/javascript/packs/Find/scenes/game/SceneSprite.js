@@ -78,5 +78,13 @@ SceneSprite.ALL_SPRITES = {
 			self.scene.anims.get('tv_flicker').repeat = -1;
 			self.scene.anims.play('tv_flicker', self);
 		},
+	},
+	dustyTome: {
+		key: 'dustyTome',
+		x: 60 * 8,
+		y: 19 * 8,
+		text: 'Read the dusty, old tome.',
+		sceneKey: 'NokiaScene',
+		transitionData: { key: 'dustyTome' },
 	}
 };

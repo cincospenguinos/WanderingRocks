@@ -23,6 +23,10 @@ const SPRITES = {
 			frameHeight: 16,
 		},
 	},
+	dustyTome: {
+		key: 'dustyTome',
+		location: `${spriteDirLoc}/dusty_tome.png`,
+	},
 	grendel: {
 		key: 'grendel',
 		location: `${spriteDirLoc}/grendel.png`,
