@@ -19,7 +19,8 @@ I think it would be a great encapsulation of our class on Modernism. Here's how 
 ### Vignettes and things
 
 - [x] Television that plays _FATHER_
-- [ ] One missionary wandering around, another you can talk to and he "bears" his testimony in French
+- [x] One missionary wandering around, another you can talk to and he "bears" his testimony in French
+- [x] Grendel's meditation on alientation and isolation
 - [ ] A man fresh out of prison asking you for money
 - [ ] A sign that indicates that the dev is out for lunch
 - [ ] A pantsless schizophrenic who yells obscenities

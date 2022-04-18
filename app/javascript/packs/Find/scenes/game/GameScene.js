@@ -46,6 +46,7 @@ export default class GameScene extends Phaser.Scene {
 		};
 
 		localStorage.setItem('lastPlayed', new Date());
+		this._konamiEnabled = false;
 	}
 
 	preload() {
@@ -85,6 +86,8 @@ export default class GameScene extends Phaser.Scene {
 	}
 
 	create() {
+		this.input.keyboard.createCombo([ 38, 38, 40, 40, 37, 39, 37, 39, 66, 65 ], { resetOnMatch: false });
+
 		this.scene.launch('DialogueScene');
 		this.anims.createFromAseprite('player');
 
@@ -110,6 +113,11 @@ export default class GameScene extends Phaser.Scene {
 		this.events.on('enable_input', () => this._playerInput.disabled = false);
 
 		this._startTime = new Date();
+
+		this.input.keyboard.on('keycombomatch', () => {
+			this._konamiEnabled = true;
+	        this.player.setGravity(10);
+	    });
 	}
 
 	update() {
@@ -153,6 +161,25 @@ export default class GameScene extends Phaser.Scene {
 		const currentDirections = this._playerInput.changeInDirections;
 
 		if (currentDirections.isChanging) {
+			if (this._konamiEnabled) {
+				const nextPos = { x: this.player.x + currentDirections.x, y: this.player.y + currentDirections.y };
+				if (nextPos.x < this.player.x) {
+					this.player.setAccelerationX(-20);
+				} else if (nextPos.x > this.player.x) {
+					this.player.setAccelerationX(20);
+				} else {
+					this.player.setAccelerationX(0);
+				}
+
+				if (nextPos.y < this.player.y) {
+					this.player.setAccelerationY(-20);
+				} else if (nextPos.y > this.player.y) {
+					this.player.setAccelerationY(20);
+				} else {
+					this.player.setAccelerationY(0);
+				}
+			}
+
 			const gridSize = CONFIG.dimensions.grid.size;
 			const nextPos = { x: this.player.x + currentDirections.x, y: this.player.y + currentDirections.y };
 
